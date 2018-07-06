@@ -1,0 +1,23 @@
+APP Version: 1.0.0
+Windows:  6.1.7601, SP 1.0, Product Type 1
+GraphicsCard: NVIDIA GeForce 840M             10.18.13.5937 OK 
+SoundDevice: NVIDIA Virtual Audio Device (Wave Extensible) (WDM) OK 
+High Definition Audio 设备 OK 
+Process:  E:\aaProduct\sf\KlMaC\src\Win32\Debug\KL_MaC.exe
+Exception Addr:  01134CF8   Module: E:\aaProduct\sf\KlMaC\src\Win32\Debug\KL_MaC.exe
+Exception Code:  80000003
+Instruction:  CC FF 15 00 49 21 01 89 45 A0 C6 45 FC 09 8D 8D
+Registers: 
+EAX: 0048E401  EBX: 7EFDE000  ECX: 00000003  EDX: 00000001
+ESI: 00000000  EDI: 00000000  ESP: 0036FDA4  EBP: 0036FEA8
+EIP: 01134CF8  EFlags: 00000202
+Call Stack:
+01134CF8  E:\aaProduct\sf\KlMaC\src\Win32\Debug\KL_MaC.exe
+011554ED  E:\aaProduct\sf\KlMaC\src\Win32\Debug\KL_MaC.exe
+0115290E  E:\aaProduct\sf\KlMaC\src\Win32\Debug\KL_MaC.exe
+0115275A  E:\aaProduct\sf\KlMaC\src\Win32\Debug\KL_MaC.exe
+011525ED  E:\aaProduct\sf\KlMaC\src\Win32\Debug\KL_MaC.exe
+01152928  E:\aaProduct\sf\KlMaC\src\Win32\Debug\KL_MaC.exe
+766833AA  C:\Windows\syswow64\kernel32.dll
+76EC9F72  C:\Windows\SysWOW64\ntdll.dll
+76EC9F45  C:\Windows\SysWOW64\ntdll.dll

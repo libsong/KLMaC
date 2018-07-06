@@ -114,7 +114,6 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CCrashStack.cpp" />
     <ClCompile Include="HighValtage.cpp" />
     <ClCompile Include="LocalWidget.cpp">
       <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\%(Filename).moc</OutputFile>
@@ -123,7 +122,12 @@
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">input</DynamicSource>
     </ClCompile>
     <ClCompile Include="main_widget.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="main.cpp">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\%(Filename).moc</OutputFile>
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">input</DynamicSource>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\%(Filename).moc</OutputFile>
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">input</DynamicSource>
+    </ClCompile>
     <ClCompile Include="menu_button.cpp" />
     <ClCompile Include="PowerSupplyBox.cpp" />
     <ClCompile Include="push_button.cpp" />
@@ -131,6 +135,8 @@
     <ClCompile Include="title_widget.cpp" />
     <ClCompile Include="tree_sys.cpp" />
     <ClCompile Include="udp_mulcast.cpp" />
+    <ClCompile Include="we_shell.cpp" />
+    <ClCompile Include="we_types.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="main_widget.h" />
@@ -146,13 +152,13 @@
     <QtMoc Include="push_button.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CCrashStack.h" />
     <ClInclude Include="common.h" />
     <QtMoc Include="udp_mulcast.h" />
     <QtMoc Include="LocalWidget.h" />
     <QtMoc Include="PowerSupplyBox.h" />
     <QtMoc Include="HighValtage.h" />
     <ClInclude Include="resource.h" />
+    <QtMoc Include="we_shell.h" />
     <ClInclude Include="we_types.h" />
     <QtMoc Include="tree_sys.h" />
     <QtMoc Include="menu_button.h" />

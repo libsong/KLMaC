@@ -3,52 +3,60 @@
 #include <QSharedMemory>
 #include <QSplashScreen>
 #include <QDateTime>
-#include <QDir>
 
 #include "main_widget.h"
-#include "CCrashStack.h"
- 
 
-#ifdef Q_OS_WIN
-long __stdcall   callback(_EXCEPTION_POINTERS*   excp)
+void myMessageOutput(QtMsgType type, const QMessageLogContext & context, const QString & msg)
 {
-	CCrashStack crashStack(excp);
-	QString sCrashInfo = crashStack.GetExceptionInfo();
+	// 加锁
+	static QMutex mutex;
+	mutex.lock();
 
-	QString file_path = QCoreApplication::applicationDirPath();
+	QByteArray localMsg = msg.toLocal8Bit();
 
-	QDir *folder_path = new QDir;
-	bool exist = folder_path->exists(file_path.append("\\MyApp"));
-	if (!exist)
+	QString strMsg("");
+	switch (type)
 	{
-		folder_path->mkdir(file_path);
+	case QtDebugMsg:
+		strMsg = QString("Debug:");
+		break;
+	case QtWarningMsg:
+		strMsg = QString("Warning:");
+		break;
+	case QtCriticalMsg:
+		strMsg = QString("Critical:");
+		break;
+	case QtFatalMsg:
+		strMsg = QString("Fatal:");
+		break;
 	}
-	delete folder_path;
-	folder_path = nullptr;
 
-	QString sFileName = file_path + "\\crash.log";
+	// 设置输出信息格式
+	QString strDateTime = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss ddd");
+	QString strMessage = QString("Message:%1 File:%2  Line:%3  Function:%4  DateTime:%5")
+		.arg(localMsg.constData()).arg(context.file).arg(context.line).arg(context.function).arg(strDateTime);
 
-	QFile file(sFileName);
-	if (file.open(QIODevice::WriteOnly | QIODevice::Truncate))
-	{
-		file.write(sCrashInfo.toUtf8());
-		file.close();
-	}
+	// 输出信息至文件中（读写、追加形式）
+	QFile file("log.txt");
+	file.open(QIODevice::ReadWrite | QIODevice::Append);
+	QTextStream stream(&file);
+	stream << strMessage << "\r\n";
+	file.flush();
+	file.close();
 
-	return   EXCEPTION_EXECUTE_HANDLER;
+	// 解锁
+	mutex.unlock();
 }
-#endif
+
 
 int main(int argc, char *argv[])
 {
-#ifdef Q_OS_WIN
-#ifdef _DEBUG
-	SetUnhandledExceptionFilter(callback);
-#endif // DEBUG	
-#endif
-
 	QApplication a(argc, argv);
 
+	//安装消息处理
+	qInstallMessageHandler(myMessageOutput);
+
+	//
 	QTextCodec *codec = QTextCodec::codecForName("System");
 	QTextCodec::setCodecForLocale(codec);
 	
@@ -76,12 +84,15 @@ int main(int argc, char *argv[])
 
 		//主窗口
 		macMainWidget w;
-		w.show();
 
+		//信息显示窗口
+		disTextBrowerTh * dis = new disTextBrowerTh;
+		QObject::connect(dis, SIGNAL(toDisTextSlot(QString)),&w, SLOT(disTextBrower(QString)));
+		dis->start();
+
+		w.show();
 		screen.finish(&w);//启动画面在窗口w创建完成以后结束  
-#ifdef _DEBUG
-		_asm   int   3   //只是为了让程序崩溃,测试抓dump文件
-#endif
+
 		return a.exec();
 	}
 }

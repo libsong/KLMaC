@@ -1,36 +1,9 @@
-﻿  Moc'ing main_widget.h...
-  Moc'ing shadow_widget.h...
-  Moc'ing title_widget.h...
-  Moc'ing push_button.h...
-  Moc'ing udp_mulcast.h...
-  Moc'ing LocalWidget.h...
-  Moc'ing PowerSupplyBox.h...
-  Moc'ing HighValtage.h...
-  Moc'ing tree_sys.h...
-  Moc'ing menu_button.h...
-  Rcc'ing KL_MaC.qrc...
-  CCrashStack.cpp
-  HighValtage.cpp
-  LocalWidget.cpp
-  main_widget.cpp
-  main.cpp
-  menu_button.cpp
-  PowerSupplyBox.cpp
-  push_button.cpp
-  shadow_widget.cpp
-  title_widget.cpp
-  tree_sys.cpp
-  udp_mulcast.cpp
-  qrc_KL_MaC.cpp
-  moc_main_widget.cpp
-  moc_shadow_widget.cpp
-  moc_title_widget.cpp
-  moc_push_button.cpp
-  moc_udp_mulcast.cpp
-  moc_LocalWidget.cpp
-  moc_PowerSupplyBox.cpp
-  moc_HighValtage.cpp
-  moc_tree_sys.cpp
-  moc_menu_button.cpp
-  KL_MaC.vcxproj -> E:\aaProduct\sf\KlMaC\realese\KlMaC_setupV1.0_0615\src\KL_MaC\Win32\Debug\KL_MaC.exe
-  KL_MaC.vcxproj -> E:\aaProduct\sf\KlMaC\realese\KlMaC_setupV1.0_0615\src\KL_MaC\Win32\Debug\KL_MaC.pdb (Full PDB)
+﻿生成启动时间为 2018/7/6 15:40:35。
+     1>项目“E:\aaProduct\sf\KlMaC\src\KL_MaC\KL_MaC.vcxproj”在节点 2 上(Build 个目标)。
+     1>Link:
+         KL_MaC.vcxproj -> E:\aaProduct\sf\KlMaC\src\Win32\Debug\KL_MaC.exe
+     1>已完成生成项目“E:\aaProduct\sf\KlMaC\src\KL_MaC\KL_MaC.vcxproj”(Build 个目标)的操作。
+
+已成功生成。
+
+已用时间 00:00:00.16

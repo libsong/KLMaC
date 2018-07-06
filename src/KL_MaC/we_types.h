@@ -1,8 +1,7 @@
 ﻿#pragma once
 
 #include <QTextCodec>
-
-#define  APP_VERSION "1.0.0"
+#include <QColor>
 
 #ifndef u16
 typedef unsigned short u16;
@@ -57,3 +56,5 @@ union  u8Tofloat
 
 
 extern QString weChinese2LocalCode(char *x);
+extern void stringToHtmlFilter(QString &str);
+extern void stringToHtml(QString &str, QColor crl);

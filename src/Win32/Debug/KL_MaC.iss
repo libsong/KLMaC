@@ -2,7 +2,7 @@
 ; 有关创建 Inno Setup 脚本文件的详细资料请查阅帮助文档！
 
 #define MyAppName "KL_MaC"
-#define MyAppVersion "1.0.0"
+#define MyAppVersion "1.1.0"
 #define MyAppPublisher "上海科梁信息工程股份有限公司"
 #define MyAppURL "www.keliangtek.com"
 #define MyAppExeName "KL_MaC.exe"  
@@ -21,14 +21,14 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DisableProgramGroupPage=yes
 OutputDir=.                             
-OutputBaseFilename=KL_MaC setup v1.0.d
+OutputBaseFilename=KL_MaC setup_x86 v1.1.d
 Compression=lzma
 SolidCompression=yes
+SetupIconFile=.\desktopicon\klmac.ico
 
 [Files]
 Source: psvince.dll; Flags: dontcopy
-Source: vc2015_redist\vc_redist.x86.exe; DestDir: "{tmp}"; Check: not IsWin64  
-Source: vc2015_redist\vc_redist.x64.exe; DestDir: "{tmp}"; Check: IsWin64 
+Source: vc2015_redist\vc_redist.x86.exe; DestDir: "{tmp}";
 
 [code]
 function IsModuleLoaded(modulename: String ): Boolean;
@@ -60,8 +60,6 @@ begin
         end
       end;
 end;
-
- 
 
 function NeedInstallVC14SP1(): Boolean;
 begin  
@@ -134,6 +132,8 @@ Source: translations\*; DestDir: "{app}\translations\"; Flags: ignoreversion rec
 Source: D3Dcompiler_47.dll; DestDir: "{app}"; Flags: ignoreversion
 Source: libEGLd.dll; DestDir: "{app}"; Flags: ignoreversion
 Source: libGLESV2d.dll; DestDir: "{app}"; Flags: ignoreversion
+Source: msvcp140d.dll; DestDir: "{app}"; Flags: ignoreversion
+Source: vcruntime140d.dll; DestDir: "{app}"; Flags: ignoreversion
 Source: opengl32sw.dll; DestDir: "{app}"; Flags: ignoreversion                   
 Source: Qt5Cored.dll; DestDir: "{app}"; Flags: ignoreversion
 Source: Qt5Guid.dll; DestDir: "{app}"; Flags: ignoreversion
@@ -151,9 +151,7 @@ Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: 
 Name: "DesktopIcon"; Description: "创建桌面快捷方式图标"  
 
 [Run]
-Filename: "{tmp}\vc_redist.x86.exe"; Parameters: /IsWin64 /q; WorkingDir: {tmp}; Flags: skipifdoesntexist; StatusMsg: "Install Microsoft Visual C++ 2015 x86 Runtime ..."; Check: NeedInstallVC14SP1 ; Check not IsWin64
-Filename: "{tmp}\vc_redist.x64.exe"; Parameters: /IsWin64 /q; WorkingDir: {tmp}; Flags: skipifdoesntexist; StatusMsg: "Install Microsoft Visual C++ 2015 x64 Runtime ..."; Check: NeedInstallVC14SP1 ; Check IsWin64
-
+Filename: "{tmp}\vc_redist.x86.exe"; Parameters: /IsWin64 /q; WorkingDir: {tmp}; Flags: skipifdoesntexist; StatusMsg: "Install Microsoft Visual C++ 2015 x86 Runtime ..."; Check: NeedInstallVC14SP1 ;
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
 ;http://blog.csdn.net/cnbata/article/details/6289031

@@ -1,0 +1,133 @@
+Message:main widget start ...
+ File:main_widget.cpp  Line:9  Function:__thiscall macMainWidget::macMainWidget(class QWidget *)  DateTime:2018-06-07 16:25:36 周四
+Message:ProcessorType :  586 File:tree_sys.cpp  Line:74  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:NumberOfProcessors :  4 File:tree_sys.cpp  Line:75  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:PageSize :  4096 File:tree_sys.cpp  Line:76  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:MaximumApplicationAddress :  0x7ffeffff File:tree_sys.cpp  Line:77  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:MinimumApplicationAddress :  0x10000 File:tree_sys.cpp  Line:78  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:MemoryLoad :  29 File:tree_sys.cpp  Line:83  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:TotalPhys :  16880472064 File:tree_sys.cpp  Line:84  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:AvailPhys :  11863687168 File:tree_sys.cpp  Line:85  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:TotalVirtual :  2147352576 File:tree_sys.cpp  Line:86  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:AvailVirtual :  1980604416 File:tree_sys.cpp  Line:87  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:------------------------------------------------------------
+ File:tree_sys.cpp  Line:138  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:Adapter Name: 	{7ABE134F-E8CC-4738-A7FD-11016A8C1E46}
+ File:tree_sys.cpp  Line:139  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:Adapter Description: 	Intel(R) Wireless-N 7260
+ File:tree_sys.cpp  Line:140  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:Adapter Address: 	 File:tree_sys.cpp  Line:141  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:48- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:51- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:B7- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:3E- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:16- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:D8
+ File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:Adapter Type: 	71
+ File:tree_sys.cpp  Line:147  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:IP Address: 	192.168.2.100
+ File:tree_sys.cpp  Line:148  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:IP Mask: 	255.255.255.0
+ File:tree_sys.cpp  Line:149  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:------------------------------------------------------------
+ File:tree_sys.cpp  Line:138  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:Adapter Name: 	{E9710AD9-5855-47FC-93C8-40E376083660}
+ File:tree_sys.cpp  Line:139  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:Adapter Description: 	Realtek PCIe GBE Family Controller
+ File:tree_sys.cpp  Line:140  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:Adapter Address: 	 File:tree_sys.cpp  Line:141  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:68- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:F7- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:28- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:3D- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:02- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:F3
+ File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:Adapter Type: 	6
+ File:tree_sys.cpp  Line:147  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:IP Address: 	192.168.2.69
+ File:tree_sys.cpp  Line:148  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:IP Mask: 	255.255.255.0
+ File:tree_sys.cpp  Line:149  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-06-07 16:25:37 周四
+Message:udp mulcast init done ... File:udp_mulcast.cpp  Line:18  Function:__thiscall macUdpMulcast::macUdpMulcast(void)  DateTime:2018-06-07 16:25:40 周四
+Message:main widget start ...
+ File:main_widget.cpp  Line:11  Function:__thiscall macMainWidget::macMainWidget(class QWidget *)  DateTime:2018-07-06 15:40:38 周五
+Message:ProcessorType :  586 File:tree_sys.cpp  Line:74  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:NumberOfProcessors :  4 File:tree_sys.cpp  Line:75  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:PageSize :  4096 File:tree_sys.cpp  Line:76  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:MaximumApplicationAddress :  0x7ffeffff File:tree_sys.cpp  Line:77  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:MinimumApplicationAddress :  0x10000 File:tree_sys.cpp  Line:78  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:MemoryLoad :  23 File:tree_sys.cpp  Line:83  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:TotalPhys :  16880472064 File:tree_sys.cpp  Line:84  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:AvailPhys :  12848103424 File:tree_sys.cpp  Line:85  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:TotalVirtual :  2147352576 File:tree_sys.cpp  Line:86  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:AvailVirtual :  1985351680 File:tree_sys.cpp  Line:87  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:------------------------------------------------------------
+ File:tree_sys.cpp  Line:138  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:Adapter Name: 	{22684EC7-DCED-44F0-B677-2F461CF95EEA}
+ File:tree_sys.cpp  Line:139  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:Adapter Description: 	Microsoft Virtual WiFi Miniport Adapter
+ File:tree_sys.cpp  Line:140  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:Adapter Address: 	 File:tree_sys.cpp  Line:141  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:4A- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:51- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:B7- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:3E- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:16- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:D8
+ File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:Adapter Type: 	71
+ File:tree_sys.cpp  Line:147  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:IP Address: 	0.0.0.0
+ File:tree_sys.cpp  Line:148  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:IP Mask: 	0.0.0.0
+ File:tree_sys.cpp  Line:149  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:------------------------------------------------------------
+ File:tree_sys.cpp  Line:138  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:Adapter Name: 	{FAEBBD96-35BC-4CD9-A67B-DC0B5F016A11}
+ File:tree_sys.cpp  Line:139  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:Adapter Description: 	Intel(R) Wireless-N 7260
+ File:tree_sys.cpp  Line:140  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:Adapter Address: 	 File:tree_sys.cpp  Line:141  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:48- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:51- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:B7- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:3E- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:16- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:D8
+ File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:Adapter Type: 	71
+ File:tree_sys.cpp  Line:147  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:IP Address: 	0.0.0.0
+ File:tree_sys.cpp  Line:148  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:IP Mask: 	0.0.0.0
+ File:tree_sys.cpp  Line:149  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:------------------------------------------------------------
+ File:tree_sys.cpp  Line:138  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:Adapter Name: 	{61523BFB-FAED-40F7-9EBF-730C1DDEE634}
+ File:tree_sys.cpp  Line:139  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:Adapter Description: 	Realtek PCIe GBE Family Controller
+ File:tree_sys.cpp  Line:140  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:Adapter Address: 	 File:tree_sys.cpp  Line:141  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:68- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:F7- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:28- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:3D- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:02- File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:F3
+ File:tree_sys.cpp  Line:144  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:Adapter Type: 	6
+ File:tree_sys.cpp  Line:147  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:IP Address: 	192.168.2.69
+ File:tree_sys.cpp  Line:148  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:IP Mask: 	255.255.255.0
+ File:tree_sys.cpp  Line:149  Function:void __thiscall macTreeSys::GetLocalInfo(void)  DateTime:2018-07-06 15:40:38 周五
+Message:udp mulcast init done ... File:udp_mulcast.cpp  Line:18  Function:__thiscall macUdpMulcast::macUdpMulcast(void)  DateTime:2018-07-06 15:40:38 周五
+Message:disTextBrowerTh in File:main_widget.cpp  Line:162  Function:void __thiscall disTextBrowerTh::run(void)  DateTime:2018-07-06 15:40:38 周五
+Message:disTextBrowerTh in File:main_widget.cpp  Line:162  Function:void __thiscall disTextBrowerTh::run(void)  DateTime:2018-07-06 15:40:38 周五
+Message:"root" File:menu_button.cpp  Line:219  Function:class QString __thiscall macLogin::LOAD_CFG_VARIANT(const class QString &)  DateTime:2018-07-06 15:40:59 周五
+Message:"redhat" File:menu_button.cpp  Line:219  Function:class QString __thiscall macLogin::LOAD_CFG_VARIANT(const class QString &)  DateTime:2018-07-06 15:40:59 周五
+Message:"192.168.1.108" File:menu_button.cpp  Line:219  Function:class QString __thiscall macLogin::LOAD_CFG_VARIANT(const class QString &)  DateTime:2018-07-06 15:40:59 周五
+Message:"true" File:menu_button.cpp  Line:219  Function:class QString __thiscall macLogin::LOAD_CFG_VARIANT(const class QString &)  DateTime:2018-07-06 15:40:59 周五
+Message:"true" File:menu_button.cpp  Line:219  Function:class QString __thiscall macLogin::LOAD_CFG_VARIANT(const class QString &)  DateTime:2018-07-06 15:40:59 周五

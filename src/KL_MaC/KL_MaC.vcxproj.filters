@@ -33,9 +33,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main_widget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -66,7 +63,13 @@
     <ClCompile Include="HighValtage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CCrashStack.cpp">
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="we_types.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="we_shell.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -106,6 +109,9 @@
     <QtMoc Include="HighValtage.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="we_shell.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h">
@@ -115,9 +121,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CCrashStack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

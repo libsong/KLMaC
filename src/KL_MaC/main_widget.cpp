@@ -3,6 +3,8 @@
 #include "common.h"
 #include <QDebug>
 
+QList<QString> g_disText;
+
 macMainWidget::macMainWidget(QWidget *parent)
 	: macShadowWidget(parent)
 {
@@ -32,11 +34,19 @@ macMainWidget::macMainWidget(QWidget *parent)
 	systree->GetLocalInfo();
 
 	//组播接收发现
-	//TODO 待改为线程模式，此方式阻塞了界面
 	MulcastListen = new macUdpMulcast;
 	connect(MulcastListen, SIGNAL(signalNewLeaf(void *)), systree, SLOT(MakeRemoteLeaf(void*)));
 	connect(MulcastListen, SIGNAL(signalNewWidget(void *)), this, SLOT(makeDevWidget(void*)));
 	
+	//信息显示窗
+	m_dis = new QTextBrowser;
+	m_dis->moveCursor(QTextCursor::End);
+
+	/*SubThread *t = new SubThread;
+	SubThread3* t3 = new SubThread3(this);
+	connect(t, SIGNAL(giveDis(QString)), this, SLOT(disTextBrower(QString)));
+	t3->start();*/
+
 	//界面布局等
 	QHBoxLayout *pHlayout = new QHBoxLayout();
 	pHlayout->addWidget(systree);
@@ -47,10 +57,14 @@ macMainWidget::macMainWidget(QWidget *parent)
 	//pLayout->setContentsMargins(SHADOW_WIDTH, SHADOW_WIDTH, SHADOW_WIDTH, SHADOW_WIDTH);//左、上、右、下的外边距可以设置为不同的值
 	//pLayout->addWidget(systree);
 	pLayout->addLayout(pHlayout);
+	pLayout->addWidget(m_dis);
 	pLayout->addStretch();//伸缩空间
 						  //pLayout->setMargin(SHADOW_WIDTH);//左、上、右、下的外边距可以设置为相同的值
 
 	setLayout(pLayout);
+
+	g_disText << "KL Mac";
+	g_disText << "KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2";
 }
 
 macMainWidget::~macMainWidget()
@@ -123,4 +137,90 @@ void macMainWidget::makeDevWidget(void *info)
 	}
 }
 
+void macMainWidget::disTextBrower(QString dis)
+{
+	QString strDateTime = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss ddd");
+	QString strMsg = strDateTime + " : " + dis;
 
+	//m_dis->insertPlainText(strMsg);
+	m_dis->append(strMsg);
+
+	//m_dis->setTextColor(QColor("red"));
+	//m_dis->setTextBackgroundColor(QColor("gray"));
+}
+
+void disTextBrowerTh::run()
+{
+	while (1)
+	{
+		if (!g_disText.isEmpty())
+		{
+			for (size_t i = 0; i < g_disText.size(); i++)
+			{
+				emit toDisTextSlot(g_disText.at(i));
+				g_disText.removeAt(i);
+				qDebug() << "disTextBrowerTh in";
+			}
+		}		
+
+		msleep(2);
+	}
+}
+
+// slot function connected to obj's someSignal 
+void SubThread::someSlot()
+{
+	emit this->giveDis("thread ");
+
+	QString msg;
+	msg.append(this->metaObject()->className());
+	msg.append("::obj's thread is ");
+	if (obj->thread() == qApp->thread())
+	{
+		msg.append("MAIN thread;");
+	}
+	else if (obj->thread() == this)
+	{
+		msg.append("SUB thread;");
+	}
+	else
+	{
+		msg.append("OTHER thread;");
+	}
+	msg.append(" someSlot executed in ");
+	if (QThread::currentThread() == qApp->thread())
+	{
+		msg.append("MAIN thread;");
+	}
+	else if (QThread::currentThread() == this)
+	{
+		msg.append("SUB thread;");
+	}
+	else
+	{
+		msg.append("OTHER thread;");
+	}
+	qDebug() << msg;
+	//quit();
+}
+
+SubThread3::SubThread3(QObject* parent)
+	: SubThread(parent)
+{
+	obj = 0;
+}
+
+// reimplement run   
+void SubThread3::run()
+{
+	obj = new SomeObject();
+	connect(obj, SIGNAL(someSignal()), this, SLOT(someSlot()));
+	/*obj->callEmitSignal();
+	exec();*/
+
+	while (1)
+	{
+		obj->callEmitSignal();
+		sleep(1);
+	}
+}
