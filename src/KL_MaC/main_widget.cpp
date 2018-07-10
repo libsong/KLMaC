@@ -41,6 +41,8 @@ macMainWidget::macMainWidget(QWidget *parent)
 	//信息显示窗
 	m_dis = new QTextBrowser;
 	m_dis->moveCursor(QTextCursor::End);
+	m_dis->verticalScrollBar()->setValue(m_dis->verticalScrollBar()->maximum());//滚动条最底
+	m_dis->document()->setMaximumBlockCount(2000); //设置最大行数
 
 	/*SubThread *t = new SubThread;
 	SubThread3* t3 = new SubThread3(this);
@@ -53,18 +55,17 @@ macMainWidget::macMainWidget(QWidget *parent)
 	pHlayout->addWidget(showStack);
 
 	QVBoxLayout *pLayout = new QVBoxLayout(this);
-	pLayout->addWidget(title_widget);
+	pLayout->addWidget(title_widget,0);
 	//pLayout->setContentsMargins(SHADOW_WIDTH, SHADOW_WIDTH, SHADOW_WIDTH, SHADOW_WIDTH);//左、上、右、下的外边距可以设置为不同的值
 	//pLayout->addWidget(systree);
-	pLayout->addLayout(pHlayout);
-	pLayout->addWidget(m_dis);
-	pLayout->addStretch();//伸缩空间
+	pLayout->addLayout(pHlayout,1);
+	pLayout->addSpacing(5);
+	pLayout->addWidget(m_dis,1);
 						  //pLayout->setMargin(SHADOW_WIDTH);//左、上、右、下的外边距可以设置为相同的值
 
 	setLayout(pLayout);
 
-	g_disText << "KL Mac";
-	g_disText << "KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2KL Mac2";
+	g_disText << weChinese2LocalCode("KL Mac Start .");
 }
 
 macMainWidget::~macMainWidget()
@@ -96,6 +97,14 @@ void macMainWidget::switchPage(McuInfo_t *val)
 		ppb->mcuInfoTable();
 		showStack->setCurrentIndex(ppbWidgetIndex); 
 	}	
+
+	if (tmp.devType == 0x0200)
+	{
+		fiu->mcu = tmp;
+		fiu->mcuInfoTable();
+		showStack->setCurrentIndex(fiuWidgetIndex);
+	}
+
 	if (tmp.devType == 0x0300)
 	{
 		hvs->mcu = tmp;
@@ -122,6 +131,21 @@ void macMainWidget::makeDevWidget(void *info)
 			qDebug() << "!!!!! ppbWidgetIndex = " << ppbWidgetIndex;
 		}
 	}
+
+	if (tmp.devType == 0x0200)
+	{
+		if (fiu == NULL)
+		{
+			fiu = new macFiuNv;
+			fiu->mcu = tmp;
+			fiu->mcuInfoTable();
+
+			showStack->addWidget(fiu);
+			fiuWidgetIndex = showStack->count() - 1;
+			qDebug() << "!!!!! fiuWidgetIndex = " << fiuWidgetIndex;
+		}
+	}
+
 	if (tmp.devType == 0x0300)
 	{
 		if (hvs == NULL)

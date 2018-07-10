@@ -25,26 +25,14 @@ macTreeSys::macTreeSys(QTreeWidget *parent)
 		m_SysInfoLeaf = new QTreeWidgetItem(m_local, QStringList(tmp));
 		m_SysInfoLeaf->setToolTip(0, tmp);
 
-		/*tmp = codec->toUnicode("网络信息");
-		m_NetInfoLeaf = new QTreeWidgetItem(m_local, QStringList(tmp));
-		m_NetInfoLeaf->setToolTip(0, tmp);*/
-
 	tmp = codec->toUnicode("远程系统");
 	m_remote = new QTreeWidgetItem(this, QStringList(tmp));
 	remoteleaf_cnt = 0;
-		/*tmp = codec->toUnicode("电源供配箱");
-		m_remoteleaf = new QTreeWidgetItem(m_remote, QStringList(tmp));
-		m_remoteleaf->setToolTip(0, tmp);*/
 
 	connect(this, SIGNAL(itemClicked(QTreeWidgetItem*, int)),\
 		this, SLOT(showLeafLeftMouseClick(QTreeWidgetItem*, int)));
-	/*connect(this, SIGNAL(customContextMenuRequested(const QPoint &)),\
-		this, SLOT(showLeafRightMouseClick(const QPoint &)));*/
 
 	this->expandAll();
-	//this->GetLocalInfo();
-
-
 }
 
 macTreeSys::~macTreeSys()
@@ -274,17 +262,25 @@ void macTreeSys::MakeRemoteLeaf(void * val)
 
 		m_leafinfo[remoteleaf_cnt] = new McuInfo_t;
 		memcpy(m_leafinfo[remoteleaf_cnt], &tmp, sizeof(McuInfo_t));
+
 		//std::string str = m_leafinfo[remoteleaf_cnt]->devName;
 		if (m_leafinfo[remoteleaf_cnt]->devType == 0x0100)
 		{
 			Devname = codec->toUnicode("电源分配箱");
 		}	
+		if (m_leafinfo[remoteleaf_cnt]->devType == 0x0200)
+		{
+			Devname = codec->toUnicode("故障注入箱");
+		}
 		if (m_leafinfo[remoteleaf_cnt]->devType == 0x0300)
 		{
 			Devname = codec->toUnicode("高压模拟箱");
 		}
+
 		m_remoteleaf[remoteleaf_cnt] = new QTreeWidgetItem(m_remote, QStringList(Devname));
+		Devname = Devname + codec->toUnicode(",双击可重命名");
 		m_remoteleaf[remoteleaf_cnt]->setToolTip(0, Devname);
+		m_remoteleaf[remoteleaf_cnt]->setFlags(m_remoteleaf[remoteleaf_cnt]->flags() | Qt::ItemIsEditable);
 
 		remoteleaf_cnt++;
 	}
@@ -306,24 +302,32 @@ void macTreeSys::MakeRemoteLeaf(void * val)
 
 				m_leafinfo[remoteleaf_cnt] = new McuInfo_t;
 				memcpy(m_leafinfo[i], &tmp, sizeof(McuInfo_t));
+
 				//std::string str = m_leafinfo[remoteleaf_cnt]->devName;
 				if (m_leafinfo[remoteleaf_cnt]->devType == 0x0100)
 				{
 					Devname = codec->toUnicode("电源分配箱");
 				}
+				if (m_leafinfo[remoteleaf_cnt]->devType == 0x0200)
+				{
+					Devname = codec->toUnicode("故障注入箱");
+				}
 				if (m_leafinfo[remoteleaf_cnt]->devType == 0x0300)
 				{
 					Devname = codec->toUnicode("高压模拟箱");
 				}
+
 				//QString tmp = QString::fromStdString(str);
 				m_remoteleaf[remoteleaf_cnt] = new QTreeWidgetItem(m_remote, QStringList(Devname));
+				Devname = Devname + codec->toUnicode(",双击可重命名");
 				m_remoteleaf[remoteleaf_cnt]->setToolTip(0, Devname);
+				m_remoteleaf[remoteleaf_cnt]->setFlags(m_remoteleaf[remoteleaf_cnt]->flags() | Qt::ItemIsEditable);
 
 				remoteleaf_cnt++;
 			}
 			else //设备树以创建 信息是否变化 如 ip 等
 			{
-				//TODO:比较结构体
+				//比较结构体
 				if (memcmp((u8 *)&tmp, (u8 *)m_leafinfo[i], sizeof(McuInfo_t)))
 				{
 					//更新信息

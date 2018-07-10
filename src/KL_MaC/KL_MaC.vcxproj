@@ -114,6 +114,7 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FiuNv.cpp" />
     <ClCompile Include="HighValtage.cpp" />
     <ClCompile Include="LocalWidget.cpp">
       <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\%(Filename).moc</OutputFile>
@@ -157,6 +158,7 @@
     <QtMoc Include="LocalWidget.h" />
     <QtMoc Include="PowerSupplyBox.h" />
     <QtMoc Include="HighValtage.h" />
+    <QtMoc Include="FiuNv.h" />
     <ClInclude Include="resource.h" />
     <QtMoc Include="we_shell.h" />
     <ClInclude Include="we_types.h" />

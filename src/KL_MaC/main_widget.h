@@ -13,6 +13,7 @@
 #include "LocalWidget.h"
 #include "PowerSupplyBox.h"
 #include "HighValtage.h"
+#include "FiuNv.h"
 #include "udp_mulcast.h"
 #include "we_types.h"
 

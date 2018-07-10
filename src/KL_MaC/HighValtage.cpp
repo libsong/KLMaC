@@ -129,6 +129,7 @@ macHighValtage::macHighValtage(QGroupBox *parent)
 
 macHighValtage::~macHighValtage()
 {
+
 }
 
 void macHighValtage::mcuInfoTable()
@@ -199,7 +200,7 @@ void macHighValtage::mcuInfoTable()
 
 	mcutable->setItem(9, 0, new QTableWidgetItem("Mcu UID"));
 	memset(buf, 0, 128);
-	sprintf(buf, "%d-%d-%d", mcu.mcuUID[2], mcu.mcuUID[1], mcu.mcuUID[0]);
+	sprintf(buf, "%x - %x - %x", mcu.mcuUID[0], mcu.mcuUID[1], mcu.mcuUID[2]);
 	str = buf;
 	tmp = QString::fromStdString(str);
 	mcutable->setItem(9, 1, new QTableWidgetItem(tmp));

@@ -18,11 +18,12 @@
 
 #include "common.h"
 #include "we_types.h"
+#include "udp_mulcast.h"
 
 //https://blog.csdn.net/polokang/article/details/6696982
 
 //
-//π ’œ◊¢»Îœ‰ 
+//π ’œ◊¢»Î∆˜ 
 //
 //
 
@@ -43,24 +44,12 @@ signals:
 	void giveQueryIp(u8 *ip, u16 p);
 
 public slots:
-	void EmitQuerySig();
-	void setVal(int type, void *);
-
 	void relayactive();
 	void relayclear(int check);
 	void ipChange(int row, int col);
+	void deviceSFRST();
 
 private:
-	QLabel			*v1G;
-	QLabel			*v1G_val;
-	QLabel			*v12;
-	QLabel			*v12_val;
-	QLabel			*v34;
-	QLabel			*v34_val;
-	QLabel			*v56;
-	QLabel			*v56_val;
-	QLabel			*hall;
-	QLabel			*hall_val;
 	QPushButton		*activeButt;
 
 	QTableWidget	*relaytable;
@@ -76,8 +65,6 @@ private:
 
 	QVBoxLayout		*vbox;
 	QHBoxLayout		*hLayout;
-
-	queryThread     *queryTh;
 };
 
 

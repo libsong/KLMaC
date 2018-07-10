@@ -77,7 +77,6 @@ macTitleWidget::macTitleWidget(QWidget *parent)
 	pLayout->setContentsMargins(1, 0, 1, 0);
 
 	setLayout(pLayout);
-	
 
 	connect(m_pMinimizeButton, SIGNAL(clicked(bool)), this, SLOT(onClicked()));
 	connect(m_pMaximizeButton, SIGNAL(clicked(bool)), this, SLOT(onClicked()));

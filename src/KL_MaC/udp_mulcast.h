@@ -13,8 +13,11 @@
 #include "common.h"
 #include "we_types.h"
 
-#define UDPMULCASTRECV_IP "225.226.227.228"
-#define UDPMULCASTRECV_PORT 54345
+#define UDPMULCASTRECV_IP "225.226.227.228"		//接收来自mcu的组播包
+#define UDPMULCASTRECV_PORT 54345			
+
+#define UDPMULCASTSEND_IP "235.236.237.238"		//发送给mcu的组播包
+#define UDPMULCASTSEND_PORT 45654
 
 #if 1
 class macUdpMulcast : public QThread

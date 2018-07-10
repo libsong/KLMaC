@@ -14,6 +14,7 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QAction>
+#include <QProcess>
 
 #include "we_shell.h"
 #include "we_types.h"
@@ -56,7 +57,7 @@ private:
 	QAction *actionRedo;
 	QAction *actionCut;
 	QAction *actionCopy;
-	QAction *actionPaste;
+	QAction *actionRst;
 	QAction *actionSelectAll;
 
 	//QAction *action_setting; //…Ë÷√

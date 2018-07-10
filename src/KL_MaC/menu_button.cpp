@@ -29,12 +29,12 @@ macMenuButton::macMenuButton(QWidget *parent /*= 0*/)
 	editMenu->addSeparator();
 	actionCut = editMenu->addAction("Cut");
 	actionCopy = editMenu->addAction("Copy");
-	actionPaste = editMenu->addAction("Paste");
-	editMenu->addSeparator();
-	actionSelectAll = editMenu->addAction("Select All");	
+	actionSelectAll = editMenu->addAction("Select All");
 
 	//退出
-	actionQuit = menu->addAction("Quit", qApp, SLOT(quit()));
+	menu->addSeparator();
+	actionRst = menu->addAction(weChinese2LocalCode("重启"), this, SLOT(actionSlots()));//https://blog.csdn.net/gatieme/article/details/50374563
+	actionQuit = menu->addAction(weChinese2LocalCode("退出"), qApp, SLOT(quit()));
 
 	connect(this, SIGNAL(clicked()), this, SLOT(showMenu()));
 }
@@ -63,6 +63,13 @@ void macMenuButton::actionSlots()
 		
 		sshlogin->show();
 	}	
+
+	if (actName == weChinese2LocalCode("重启"))
+	{
+		qApp->closeAllWindows();
+
+		QProcess::startDetached(qApp->applicationFilePath(),QStringList());
+	}
 }
 
 void macMenuButton::makeSsh(QString ip, QString usr, QString pwd)
