@@ -2,4 +2,5 @@
 KL manager and control tool kits v1.1.0
 
 add FIU support
-add SP support
+
+add SP(signal process) support
