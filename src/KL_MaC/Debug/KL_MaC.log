@@ -1,9 +1,46 @@
-﻿生成启动时间为 2018/7/10 17:04:39。
+﻿生成启动时间为 2018/7/13 13:30:54。
      1>项目“E:\aaProduct\sf\KlMaC\src\KL_MaC\KL_MaC.vcxproj”在节点 2 上(Build 个目标)。
-     1>Link:
+     1>ClCompile:
+         D:\vs\exe2015\VC\bin\CL.exe /c /I.\GeneratedFiles /I. /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include /I.\GeneratedFiles\Debug /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtCore /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtGui /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtANGLE /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtWidgets /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtNetwork /Zi /nologo /W1 /WX- /MP /Od /Oy- /D UNICODE /D WIN32 /D WIN64 /D QT_DLL /D QT_CORE_LIB /D QT_GUI_LIB /D QT_WIDGETS_LIB /D QT_NETWORK_LIB /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt .\GeneratedFiles\qrc_KL_MaC.cpp HighValtage.cpp PowerSupplyBox.cpp main_widget.cpp tree_sys.cpp
+         qrc_KL_MaC.cpp
+         HighValtage.cpp
+         PowerSupplyBox.cpp
+         main_widget.cpp
+         tree_sys.cpp
+       Link:
+         D:\vs\exe2015\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\aaProduct\sf\KlMaC\src\Win32\Debug\\KL_MaC.exe" /NOLOGO /LIBPATH:D:\Qt\5.8.0\vs_exe\5.8\msvc2015\lib qtmaind.lib Qt5Cored.lib Iphlpapi.lib Qt5Guid.lib Qt5Widgetsd.lib Qt5Networkd.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"E:\aaProduct\sf\KlMaC\src\Win32\Debug\KL_MaC.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\aaProduct\sf\KlMaC\src\Win32\Debug\KL_MaC.lib" /MACHINE:X86 /SAFESEH Debug\KL_MaC.res
+         Debug\FiuNv.obj
+         Debug\HighValtage.obj
+         Debug\LocalWidget.obj
+         Debug\main_widget.obj
+         Debug\main.obj
+         Debug\menu_button.obj
+         Debug\PowerSupplyBox.obj
+         Debug\push_button.obj
+         Debug\shadow_widget.obj
+         Debug\SignalProcess.obj
+         Debug\title_widget.obj
+         Debug\tree_sys.obj
+         Debug\udp_mulcast.obj
+         Debug\we_shell.obj
+         Debug\we_types.obj
+         Debug\moc_main_widget.obj
+         Debug\moc_shadow_widget.obj
+         Debug\moc_title_widget.obj
+         Debug\moc_push_button.obj
+         Debug\moc_udp_mulcast.obj
+         Debug\moc_LocalWidget.obj
+         Debug\moc_PowerSupplyBox.obj
+         Debug\moc_HighValtage.obj
+         Debug\moc_FiuNv.obj
+         Debug\moc_we_shell.obj
+         Debug\moc_SignalProcess.obj
+         Debug\moc_tree_sys.obj
+         Debug\moc_menu_button.obj
+         Debug\qrc_KL_MaC.obj
          KL_MaC.vcxproj -> E:\aaProduct\sf\KlMaC\src\Win32\Debug\KL_MaC.exe
      1>已完成生成项目“E:\aaProduct\sf\KlMaC\src\KL_MaC\KL_MaC.vcxproj”(Build 个目标)的操作。
 
 已成功生成。
 
-已用时间 00:00:00.15
+已用时间 00:00:05.89

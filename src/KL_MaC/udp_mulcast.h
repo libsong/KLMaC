@@ -6,7 +6,7 @@
 #include <QMutex>
 #include <QMessageBox>
 #include <QNetworkConfigurationManager>
-
+#include <QApplication>
 #include <WinSock2.h>
 #include <iphlpapi.h>
 

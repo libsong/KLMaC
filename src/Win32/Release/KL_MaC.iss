@@ -2,7 +2,7 @@
 ; 有关创建 Inno Setup 脚本文件的详细资料请查阅帮助文档！
 
 #define MyAppName "KL_MaC"
-#define MyAppVersion "1.0.0"
+#define MyAppVersion "1.1.0"
 #define MyAppPublisher "上海科梁信息工程股份有限公司"
 #define MyAppURL "www.keliangtek.com"
 #define MyAppExeName "KL_MaC.exe"  
@@ -22,10 +22,12 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DisableProgramGroupPage=yes
 OutputDir=.                                
-OutputBaseFilename=KL_MaC_setup_v1.0_x86
+OutputBaseFilename=KL_MaC_setup_v1.1_x86
 Compression=lzma
 SolidCompression=yes
 SetupIconFile=.\desktopicon\klmac.ico
+WizardSmallImageFile=.\desktopicon\InstallSmallIcon.bmp
+WizardImageFile=.\desktopicon\InstallImage.bmp
 
 [Files]
 Source: psvince.dll; Flags: dontcopy
@@ -158,10 +160,21 @@ Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChang
 
 ;http://blog.csdn.net/cnbata/article/details/6289031
 [code]
+procedure InitializeWizard();
+begin
+//改变欢迎页面文字的颜色(如图)
+WizardForm.WelcomeLabel1.Font.Color:=clNavy;
+WizardForm.WelcomeLabel2.Font.Color:=clTeal;
+WizardForm.WelcomeLabel2.caption:=WizardForm.WelcomeLabel2.caption + #13#10#13#10 'www.keliangtek.com';WizardForm.WelcomeLabel2.Autosize:=true;
+//改变其他页面文字的颜色(如图)
+WizardForm.PageNameLabel.Font.Color:=clred;
+WizardForm.PageDescriptionLabel.Font.Color:=clBlue;
+end;
+
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
-	begin
-		if CurUninstallStep = usUninstall then
-			if MsgBox('您是否要删除所有用户配置信息？', mbConfirmation, MB_YESNO) = IDYES then
-			DelTree(ExpandConstant('{app}'), True, True, True);
-	end;
+begin
+  if CurUninstallStep = usUninstall then
+    if MsgBox('您是否要删除所有用户配置信息？', mbConfirmation, MB_YESNO) = IDYES then
+    DelTree(ExpandConstant('{app}'), True, True, True);
+end;
 [/code] 

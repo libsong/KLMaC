@@ -1,5 +1,7 @@
 #include "HighValtage.h"
 
+extern QList<QString> g_disText;
+
 macHighValtage::macHighValtage(QGroupBox *parent)
 	: QGroupBox(parent)
 {
@@ -439,7 +441,6 @@ void macHighValtage::relayactive()
 	u8 crc = 0;
 	QUdpSocket *uSocket = new QUdpSocket();
 
-
 	QByteArray relay_data;
 	relay_data.resize(38);
 	for (int i = 0; i < 8; i++)
@@ -514,6 +515,10 @@ void macHighValtage::relayactive()
 	if (rv != relay_data.length())
 	{
 		//QMessageBox::information(NULL, "Warning", "Send Message Failed !", QMessageBox::Yes, QMessageBox::Yes);
+	}
+	else
+	{
+		g_disText << weChinese2LocalCode("高压模拟器 配置已激活");
 	}
 
 	uSocket->disconnect();

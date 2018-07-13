@@ -21,8 +21,8 @@ macUdpMulcast::macUdpMulcast()
 	else
 	{
 		QMessageBox::warning(NULL,"Net Check Failed !!!", weChinese2LocalCode("ÍøÂç³õÊ¼»¯Ê§°Ü£¬Çë¼ì²éÍøÂçºóÖØÆôÈí¼þ!"),NULL,NULL);
-	}
-	
+		//qApp->quit();
+	}	
 }
 
 macUdpMulcast::~macUdpMulcast()

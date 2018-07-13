@@ -1,24 +1,87 @@
-﻿  Moc'ing main_widget.h...
-  HighValtage.cpp
-  LocalWidget.cpp
-  main_widget.cpp
-  main.cpp
-  menu_button.cpp
-  PowerSupplyBox.cpp
-  push_button.cpp
-  shadow_widget.cpp
-  title_widget.cpp
-  tree_sys.cpp
-  udp_mulcast.cpp
-  qrc_KL_MaC.cpp
-  moc_HighValtage.cpp
-  moc_LocalWidget.cpp
-  moc_PowerSupplyBox.cpp
-  moc_main_widget.cpp
-  moc_menu_button.cpp
-  moc_push_button.cpp
-  moc_shadow_widget.cpp
-  moc_title_widget.cpp
-  moc_tree_sys.cpp
-  moc_udp_mulcast.cpp
-  KL_MaC.vcxproj -> E:\aaProduct\sf\KlMaC\src\KL_MaC\Win32\Release\KL_MaC.exe
+﻿生成启动时间为 2018/7/13 14:46:26。
+     1>项目“E:\aaProduct\sf\KlMaC\src\KL_MaC\KL_MaC.vcxproj”在节点 2 上(Rebuild 个目标)。
+     1>QtFinalize:
+         Moc'ing main_widget.h...
+         Moc'ing shadow_widget.h...
+         Moc'ing title_widget.h...
+         Moc'ing push_button.h...
+         Moc'ing udp_mulcast.h...
+         Moc'ing LocalWidget.h...
+         Moc'ing PowerSupplyBox.h...
+         Moc'ing HighValtage.h...
+         Moc'ing FiuNv.h...
+         Moc'ing we_shell.h...
+         Moc'ing SignalProcess.h...
+         Moc'ing tree_sys.h...
+         Moc'ing menu_button.h...
+         Rcc'ing KL_MaC.qrc...
+       ClCompile:
+         D:\vs\exe2015\VC\bin\CL.exe /c /I.\GeneratedFiles /I. /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include /I.\GeneratedFiles\Release /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtCore /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtGui /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtANGLE /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtWidgets /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtNetwork /nologo /W1 /WX- /MP /O2 /Oy- /D UNICODE /D WIN32 /D WIN64 /D QT_DLL /D QT_NO_DEBUG /D NDEBUG /D QT_CORE_LIB /D QT_GUI_LIB /D QT_WIDGETS_LIB /D QT_NETWORK_LIB /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Release\\" /Fd"Release\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt FiuNv.cpp HighValtage.cpp LocalWidget.cpp main_widget.cpp main.cpp menu_button.cpp PowerSupplyBox.cpp push_button.cpp shadow_widget.cpp SignalProcess.cpp title_widget.cpp tree_sys.cpp udp_mulcast.cpp we_shell.cpp we_types.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_main_widget.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_shadow_widget.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_title_widget.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_push_button.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_udp_mulcast.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_LocalWidget.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_PowerSupplyBox.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_HighValtage.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_FiuNv.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_we_shell.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_SignalProcess.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_tree_sys.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_menu_button.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\qrc_KL_MaC.cpp
+         FiuNv.cpp
+         HighValtage.cpp
+         LocalWidget.cpp
+         main_widget.cpp
+         main.cpp
+         menu_button.cpp
+         PowerSupplyBox.cpp
+         push_button.cpp
+         shadow_widget.cpp
+         SignalProcess.cpp
+         title_widget.cpp
+         tree_sys.cpp
+         udp_mulcast.cpp
+         we_shell.cpp
+         we_types.cpp
+         moc_main_widget.cpp
+         moc_shadow_widget.cpp
+         moc_title_widget.cpp
+         moc_push_button.cpp
+         moc_udp_mulcast.cpp
+         moc_LocalWidget.cpp
+         moc_PowerSupplyBox.cpp
+         moc_HighValtage.cpp
+         moc_FiuNv.cpp
+         moc_we_shell.cpp
+         moc_SignalProcess.cpp
+         moc_tree_sys.cpp
+         moc_menu_button.cpp
+         qrc_KL_MaC.cpp
+       ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /l"0x0409" /nologo /fo"Release\KL_MaC.res" KL_MaC.rc 
+       Link:
+         D:\vs\exe2015\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\aaProduct\sf\KlMaC\src\Win32\Release\\KL_MaC.exe" /NOLOGO /LIBPATH:D:\Qt\5.8.0\vs_exe\5.8\msvc2015\lib qtmain.lib Qt5Core.lib Qt5Gui.lib Iphlpapi.lib Qt5Widgets.lib Qt5Network.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"E:\aaProduct\sf\KlMaC\src\Win32\Release\KL_MaC.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\aaProduct\sf\KlMaC\src\Win32\Release\KL_MaC.lib" /MACHINE:X86 /SAFESEH Release\KL_MaC.res
+         Release\FiuNv.obj
+         Release\HighValtage.obj
+         Release\LocalWidget.obj
+         Release\main_widget.obj
+         Release\main.obj
+         Release\menu_button.obj
+         Release\PowerSupplyBox.obj
+         Release\push_button.obj
+         Release\shadow_widget.obj
+         Release\SignalProcess.obj
+         Release\title_widget.obj
+         Release\tree_sys.obj
+         Release\udp_mulcast.obj
+         Release\we_shell.obj
+         Release\we_types.obj
+         Release\moc_main_widget.obj
+         Release\moc_shadow_widget.obj
+         Release\moc_title_widget.obj
+         Release\moc_push_button.obj
+         Release\moc_udp_mulcast.obj
+         Release\moc_LocalWidget.obj
+         Release\moc_PowerSupplyBox.obj
+         Release\moc_HighValtage.obj
+         Release\moc_FiuNv.obj
+         Release\moc_we_shell.obj
+         Release\moc_SignalProcess.obj
+         Release\moc_tree_sys.obj
+         Release\moc_menu_button.obj
+         Release\qrc_KL_MaC.obj
+         KL_MaC.vcxproj -> E:\aaProduct\sf\KlMaC\src\Win32\Release\KL_MaC.exe
+     1>已完成生成项目“E:\aaProduct\sf\KlMaC\src\KL_MaC\KL_MaC.vcxproj”(Rebuild 个目标)的操作。
+
+已成功生成。
+
+已用时间 00:00:17.29

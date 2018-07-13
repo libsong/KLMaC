@@ -75,6 +75,9 @@
     <ClCompile Include="FiuNv.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SignalProcess.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="KL_MaC.qrc">
@@ -116,6 +119,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="FiuNv.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="SignalProcess.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

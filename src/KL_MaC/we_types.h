@@ -43,10 +43,10 @@ typedef enum {
 	COMM_CMD_RELAY_ACTIVE,//hvs
 	COMM_CMD_RELAY_RESET,//hvs
 	COMM_CMD_RELAY_ADC,//hvs GET VAL CUR
-
 	COMM_CMD_RELAY_PWR,//pdo
-
 	COMM_CMD_RELAY_FIU_ACT,//NEW fiu
+	COMM_CMD_SP_GAIN,//Signal process box set gain
+	COMM_CMD_SP_STATUS,//Signal process box query status	
 
 	COMM_CMD_IP = 0xc8,//ip port gw nm, v1.1.0 fiu mofigy ip info. by mulcast
 	COMM_CMD_UID = 0xc9, //give mcu uid

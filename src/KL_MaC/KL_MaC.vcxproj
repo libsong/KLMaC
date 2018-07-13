@@ -133,6 +133,7 @@
     <ClCompile Include="PowerSupplyBox.cpp" />
     <ClCompile Include="push_button.cpp" />
     <ClCompile Include="shadow_widget.cpp" />
+    <ClCompile Include="SignalProcess.cpp" />
     <ClCompile Include="title_widget.cpp" />
     <ClCompile Include="tree_sys.cpp" />
     <ClCompile Include="udp_mulcast.cpp" />
@@ -161,6 +162,7 @@
     <QtMoc Include="FiuNv.h" />
     <ClInclude Include="resource.h" />
     <QtMoc Include="we_shell.h" />
+    <QtMoc Include="SignalProcess.h" />
     <ClInclude Include="we_types.h" />
     <QtMoc Include="tree_sys.h" />
     <QtMoc Include="menu_button.h" />

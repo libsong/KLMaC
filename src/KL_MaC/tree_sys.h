@@ -5,6 +5,8 @@
 
 #include <WinSock2.h>
 #include <iphlpapi.h>
+#include <iostream>
+#include <map>
 
 #include "we_types.h"
 
@@ -35,6 +37,8 @@ public:
 		return 0;
 	}
 	void GetLocalInfo(void);
+
+	std::map<QString, int> mapRemoteLeaf;	//用芯片UID标示是否已经创建了此设备的widget,uid组成字符串key
 
 signals:
 	void GiveLocalInfo(int infotype,int row, int col, const QString &text);

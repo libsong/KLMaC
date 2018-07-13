@@ -1,5 +1,7 @@
 #include "PowerSupplyBox.h"
 
+extern QList<QString> g_disText;
+
 macPowerSupplyBox::macPowerSupplyBox(QGroupBox *parent)
 	: QGroupBox(parent)
 {
@@ -332,19 +334,7 @@ void macPowerSupplyBox::relayactive()
 	qint64 rv = 0;
 
 	QUdpSocket *uSocket = new QUdpSocket();
-	//rv = uSocket->bind(QHostAddress::AnyIPv4, UDPLOCAL_PORT);
-	//if (rv)
-	//{
-	//	uSocket->setSocketOption(QAbstractSocket::ReceiveBufferSizeSocketOption, 1024 );//设置缓冲区
-	//	//connect(uSocket, SIGNAL(readyRead()), this, SLOT(receive()));
-	//}
-	//else {
-	//	qDebug("bind failed");
-	//	return;
-	//}
 	
-		
-
 	QByteArray relay_data;
 	relay_data.resize(31);
 	for (int i=0;i<8;i++)
@@ -380,7 +370,10 @@ void macPowerSupplyBox::relayactive()
 	{
 		QMessageBox::information(NULL, "Warning", "Send Message Failed !", QMessageBox::Yes, QMessageBox::Yes);
 	}
-
+	else
+	{
+		g_disText << weChinese2LocalCode("电源分配箱 配置已激活");
+	}
 	uSocket->disconnect();
 	delete uSocket;
 

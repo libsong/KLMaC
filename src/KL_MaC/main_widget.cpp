@@ -65,7 +65,7 @@ macMainWidget::macMainWidget(QWidget *parent)
 
 	setLayout(pLayout);
 
-	g_disText << weChinese2LocalCode("KL Mac Start .");
+	g_disText << weChinese2LocalCode("KL MaC Start .");
 }
 
 macMainWidget::~macMainWidget()
@@ -93,23 +93,42 @@ void macMainWidget::switchPage(McuInfo_t *val)
 
 	if (tmp.devType == 0x0100)
 	{
-		ppb->mcu = tmp;
-		ppb->mcuInfoTable();
-		showStack->setCurrentIndex(ppbWidgetIndex); 
+		if (ppb != NULL)
+		{
+			ppb->mcu = tmp;
+			ppb->mcuInfoTable();
+			showStack->setCurrentIndex(ppbWidgetIndex);
+		}
 	}	
 
 	if (tmp.devType == 0x0200)
 	{
-		fiu->mcu = tmp;
-		fiu->mcuInfoTable();
-		showStack->setCurrentIndex(fiuWidgetIndex);
+		if (fiu != NULL)
+		{
+			fiu->mcu = tmp;
+			fiu->mcuInfoTable();
+			showStack->setCurrentIndex(fiuWidgetIndex);
+		}
 	}
 
 	if (tmp.devType == 0x0300)
 	{
-		hvs->mcu = tmp;
-		hvs->mcuInfoTable();
-		showStack->setCurrentIndex(hvsWidgetIndex); 
+		if (hvs != NULL)
+		{
+			hvs->mcu = tmp;
+			hvs->mcuInfoTable();
+			showStack->setCurrentIndex(hvsWidgetIndex);
+		}
+	}
+
+	if (tmp.devType == 0x0400)
+	{
+		if (sp != NULL)
+		{
+			sp->mcu = tmp;
+			sp->mcuInfoTable();
+			showStack->setCurrentIndex(spWidgetIndex);
+		}
 	}
 }
 
@@ -157,6 +176,20 @@ void macMainWidget::makeDevWidget(void *info)
 			showStack->addWidget(hvs);
 			hvsWidgetIndex = showStack->count() - 1;
 			qDebug() << "!!!!! hvsWidgetIndex = " << hvsWidgetIndex;
+		}
+	}
+
+	if (tmp.devType == 0x0400) //TODO
+	{
+		if (sp == NULL)
+		{
+			sp = new macSP;
+			sp->mcu = tmp;
+			sp->mcuInfoTable();
+
+			showStack->addWidget(sp);
+			spWidgetIndex = showStack->count() - 1;
+			qDebug() << "!!!!! spWidgetIndex = " << spWidgetIndex;
 		}
 	}
 }

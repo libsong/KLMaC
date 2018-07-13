@@ -14,6 +14,7 @@
 #include "PowerSupplyBox.h"
 #include "HighValtage.h"
 #include "FiuNv.h"
+#include "SignalProcess.h"
 #include "udp_mulcast.h"
 #include "we_types.h"
 
@@ -45,10 +46,12 @@ private:
 	//设备widget类
 	macPowerSupplyBox	*ppb = NULL;	//电源分配箱 PowerSupplyBox 0x0100	
 	int					ppbWidgetIndex = 0;
-	macHighValtage   	*hvs = NULL;	//高压模拟器 PowerSupplyBox 0x0300	
+	macHighValtage   	*hvs = NULL;	//高压模拟器 HighValtageBox 0x0300	
 	int					hvsWidgetIndex = 0;
-	macFiuNv		   	*fiu = NULL;	//高压模拟器 PowerSupplyBox 0x0300	
+	macFiuNv		   	*fiu = NULL;	//故障注入箱 FaultInsertUnit 0x0200	
 	int					fiuWidgetIndex = 0;
+	macSP		   	*sp = NULL;	//信号调理箱 SignalProcessBox 0x0400	
+	int					spWidgetIndex = 0;
 
 	macUdpMulcast		*MulcastListen;
 
