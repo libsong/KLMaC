@@ -14,24 +14,20 @@
 AppId={{9EE8C270-DCDE-4382-95E0-07E857966A94}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
-;AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DisableProgramGroupPage=yes
-OutputDir=.                                
-OutputBaseFilename=KL_MaC_setup_v1.1_x86
+OutputDir=.                             
+OutputBaseFilename=KL_MaC setup_x86 v1.1.d
 Compression=lzma
 SolidCompression=yes
 SetupIconFile=.\desktopicon\klmac.ico
-WizardSmallImageFile=.\desktopicon\InstallSmallIcon.bmp
-WizardImageFile=.\desktopicon\InstallImage.bmp
 
 [Files]
 Source: psvince.dll; Flags: dontcopy
-Source: vc2015_redist\vc_redist.x86.exe; DestDir: "{tmp}";
 
 [code]
 function IsModuleLoaded(modulename: String ): Boolean;
@@ -63,27 +59,6 @@ begin
         end
       end;
 end;
-
-function NeedInstallVC14SP1(): Boolean;
-begin  
-	Result := true;
-	if IsWin64 then
-		begin  
-			if RegValueExists(HKLM64, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{74d0e5db-b326-4dae-a6b2-445b9de1836e}', 'UninstallString') then
-				begin
-          MsgBox('安装程序检测到 {#MyAppName} 正在运行，请先关闭程序！'#13'单击“确定”按钮后退出安装！', mbInformation, MB_OK);
-					Result := false;
-				end    
-		end
-	else
-		begin
-			if RegValueExists(HKLM, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{74d0e5db-b326-4dae-a6b2-445b9de1836e}', 'UninstallString') then
-				begin
-          MsgBox('安装程序检测到1234 {#MyAppName} 正在运行，请先关闭程序！'#13'单击“确定”按钮后退出安装！', mbInformation, MB_OK);
-					Result := false;
-				end  
-		end   
-end; 
 
 function InitializeSetup(): Boolean;
 var
@@ -135,14 +110,19 @@ Source: imageformats\*; DestDir: "{app}\imageformats\"; Flags: ignoreversion rec
 Source: platforms\*; DestDir: "{app}\platforms\"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: translations\*; DestDir: "{app}\translations\"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: D3Dcompiler_47.dll; DestDir: "{app}"; Flags: ignoreversion
-Source: libEGL.dll; DestDir: "{app}"; Flags: ignoreversion
-Source: libGLESV2.dll; DestDir: "{app}"; Flags: ignoreversion
-Source: opengl32sw.dll; DestDir: "{app}"; Flags: ignoreversion              
-Source: Qt5Core.dll; DestDir: "{app}"; Flags: ignoreversion
-Source: Qt5Gui.dll; DestDir: "{app}"; Flags: ignoreversion
-Source: Qt5Network.dll; DestDir: "{app}"; Flags: ignoreversion
-Source: Qt5Svg.dll; DestDir: "{app}"; Flags: ignoreversion
-Source: Qt5Widgets.dll; DestDir: "{app}"; Flags: ignoreversion
+Source: libEGLd.dll; DestDir: "{app}"; Flags: ignoreversion
+Source: libGLESV2d.dll; DestDir: "{app}"; Flags: ignoreversion
+Source: msvcp140d.dll; DestDir: "{app}"; Flags: ignoreversion
+Source: vcruntime140d.dll; DestDir: "{app}"; Flags: ignoreversion
+Source: opengl32sw.dll; DestDir: "{app}"; Flags: ignoreversion                   
+Source: Qt5Cored.dll; DestDir: "{app}"; Flags: ignoreversion
+Source: Qt5Guid.dll; DestDir: "{app}"; Flags: ignoreversion
+Source: Qt5Networkd.dll; DestDir: "{app}"; Flags: ignoreversion
+Source: Qt5Svgd.dll; DestDir: "{app}"; Flags: ignoreversion
+Source: Qt5Widgetsd.dll; DestDir: "{app}"; Flags: ignoreversion
+Source: libeay32.dll; DestDir: "{app}"; Flags: ignoreversion
+Source: ssleay32.dll; DestDir: "{app}"; Flags: ignoreversion
+Source: doc\*; DestDir: "{app}\doc\"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: desktopicon\*; DestDir: "{app}\desktopicon\"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; 注意: 不要在任何共享系统文件上使用“Flags: ignoreversion”
 
@@ -154,27 +134,15 @@ Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: 
 Name: "DesktopIcon"; Description: "创建桌面快捷方式图标"  
 
 [Run]
-Filename: "{tmp}\vc_redist.x86.exe"; Parameters: /q; WorkingDir: {tmp}; Flags: skipifdoesntexist; StatusMsg: "Install Microsoft Visual C++ 2015 x86 Runtime ..."; Check: NeedInstallVC14SP1
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
-
 ;http://blog.csdn.net/cnbata/article/details/6289031
-[code]
-procedure InitializeWizard();
-begin
-//改变欢迎页面文字的颜色(如图)
-WizardForm.WelcomeLabel1.Font.Color:=clNavy;
-WizardForm.WelcomeLabel2.Font.Color:=clTeal;
-WizardForm.WelcomeLabel2.caption:=WizardForm.WelcomeLabel2.caption + #13#10#13#10 'www.keliangtek.com';WizardForm.WelcomeLabel2.Autosize:=true;
-//改变其他页面文字的颜色(如图)
-WizardForm.PageNameLabel.Font.Color:=clred;
-WizardForm.PageDescriptionLabel.Font.Color:=clBlue;
-end;
 
+[code]
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
-begin
-  if CurUninstallStep = usUninstall then
-    if MsgBox('您是否要删除所有用户配置信息？', mbConfirmation, MB_YESNO) = IDYES then
-    DelTree(ExpandConstant('{app}'), True, True, True);
-end;
+	begin
+		if CurUninstallStep = usUninstall then
+			if MsgBox('您是否要删除所有用户配置信息？', mbConfirmation, MB_YESNO) = IDYES then
+			DelTree(ExpandConstant('{app}'), True, True, True);
+	end;
 [/code] 

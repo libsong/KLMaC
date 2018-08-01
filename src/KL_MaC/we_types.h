@@ -3,6 +3,8 @@
 #include <QTextCodec>
 #include <QColor>
 
+#define KLMACSFTVERSION "v1.1.0"
+
 #ifndef u16
 typedef unsigned short u16;
 #endif

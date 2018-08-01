@@ -28,7 +28,6 @@ SetupIconFile=.\desktopicon\klmac.ico
 
 [Files]
 Source: psvince.dll; Flags: dontcopy
-Source: vc2015_redist\vc_redist.x86.exe; DestDir: "{tmp}";
 
 [code]
 function IsModuleLoaded(modulename: String ): Boolean;
@@ -60,25 +59,6 @@ begin
         end
       end;
 end;
-
-function NeedInstallVC14SP1(): Boolean;
-begin  
-	Result := true;
-	if IsWin64 then
-		begin  
-			if RegValueExists(HKLM64, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{BC958BD2-5DAC-3862-BB1A-C1BE0790438D}', 'UninstallString') then
-				begin
-					Result := false;
-				end    
-		end
-	else
-		begin
-			if RegValueExists(HKLM, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{74d0e5db-b326-4dae-a6b2-445b9de1836e}', 'UninstallString') then
-				begin
-					Result := false;
-				end  
-		end   
-end; 
 
 function InitializeSetup(): Boolean;
 var
@@ -140,6 +120,9 @@ Source: Qt5Guid.dll; DestDir: "{app}"; Flags: ignoreversion
 Source: Qt5Networkd.dll; DestDir: "{app}"; Flags: ignoreversion
 Source: Qt5Svgd.dll; DestDir: "{app}"; Flags: ignoreversion
 Source: Qt5Widgetsd.dll; DestDir: "{app}"; Flags: ignoreversion
+Source: libeay32.dll; DestDir: "{app}"; Flags: ignoreversion
+Source: ssleay32.dll; DestDir: "{app}"; Flags: ignoreversion
+Source: doc\*; DestDir: "{app}\doc\"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: desktopicon\*; DestDir: "{app}\desktopicon\"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; 注意: 不要在任何共享系统文件上使用“Flags: ignoreversion”
 
@@ -151,7 +134,6 @@ Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: 
 Name: "DesktopIcon"; Description: "创建桌面快捷方式图标"  
 
 [Run]
-Filename: "{tmp}\vc_redist.x86.exe"; Parameters: /IsWin64 /q; WorkingDir: {tmp}; Flags: skipifdoesntexist; StatusMsg: "Install Microsoft Visual C++ 2015 x86 Runtime ..."; Check: NeedInstallVC14SP1 ;
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
 ;http://blog.csdn.net/cnbata/article/details/6289031

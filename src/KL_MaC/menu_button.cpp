@@ -1,5 +1,7 @@
 #include "menu_button.h"
 
+extern QList<QString> g_disText;
+
 
 macMenuButton::macMenuButton(QWidget *parent /*= 0*/)
 	: QPushButton(parent)
@@ -31,6 +33,13 @@ macMenuButton::macMenuButton(QWidget *parent /*= 0*/)
 	actionCopy = editMenu->addAction("Copy");
 	actionSelectAll = editMenu->addAction("Select All");
 
+	//关于、帮助
+	menu->addSeparator();
+	helpMenu = menu->addMenu(weChinese2LocalCode("帮助")); 
+	actionAbout = helpMenu->addAction(weChinese2LocalCode("关于 ..."), this, SLOT(aboutDialog()));
+	actionHelp = helpMenu->addAction(weChinese2LocalCode("KL MaC 使用说明"),this,SLOT(useHelp()));
+
+
 	//退出
 	menu->addSeparator();
 	actionRst = menu->addAction(weChinese2LocalCode("重启"), this, SLOT(actionSlots()));//https://blog.csdn.net/gatieme/article/details/50374563
@@ -57,7 +66,7 @@ void macMenuButton::actionSlots()
 
 	if (actName == weChinese2LocalCode("命令行ssh"))
 	{
-		macLogin *sshlogin = new macLogin;
+		macLogin *sshlogin = new macLogin(this);
 		connect(sshlogin, SIGNAL(makeSshTerminate(QString, QString, QString)),\
 			this, SLOT(makeSsh(QString, QString, QString)));
 		
@@ -72,14 +81,50 @@ void macMenuButton::actionSlots()
 	}
 }
 
+void macMenuButton::aboutDialog()
+{
+	QDialog *about = new QDialog(this);
+	about->setWindowFlags(about->windowFlags() & ~Qt::WindowContextHelpButtonHint);
+	about->setAttribute(Qt::WA_DeleteOnClose, true);
+	about->setFixedWidth(220);
+	about->setFixedHeight(80);
+
+	QFont font("arial", 10, 75);
+	QLabel *company = new QLabel;
+	company->setFont(font);
+	company->setText(weChinese2LocalCode("上海科梁信息工程股份有限公司"));
+	QLabel *copyright = new QLabel;	
+	copyright->setFont(font);
+	copyright->setText(QString("< font  color=#e9a96f;>Copyright &#169; 2018</font>"));
+	QLabel *version = new QLabel;
+	version->setText(KLMACSFTVERSION);
+
+	QVBoxLayout *lyt = new QVBoxLayout;
+	lyt->addWidget(company);
+	lyt->addWidget(copyright);
+	lyt->addWidget(version);
+
+	about->setLayout(lyt);
+	about->show();
+}
+
+void macMenuButton::useHelp()	//open folder to pdf & vedio
+{
+	QString  path = "file:" + QCoreApplication::applicationDirPath() + "/doc";
+	QDesktopServices::openUrl(QUrl(path,QUrl::TolerantMode));
+
+	g_disText << path;
+}
+
 void macMenuButton::makeSsh(QString ip, QString usr, QString pwd)
 {
-	macShell * ssh = new macShell;
+	macShell * ssh = new macShell();
 	ssh->saveSshObjInf(ip,usr,pwd);
 	ssh->show();
 }
 
-macLogin::macLogin()
+macLogin::macLogin(QWidget *parent)
+	: QDialog(parent)
 {
 	m_nameUsr = new QLabel(weChinese2LocalCode("用户名"));
 	m_namePwd = new QLabel(weChinese2LocalCode("密 码"));

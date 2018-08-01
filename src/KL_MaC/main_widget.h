@@ -18,6 +18,7 @@
 #include "udp_mulcast.h"
 #include "we_types.h"
 
+
 class macMainWidget : public macShadowWidget
 {
 	Q_OBJECT
@@ -50,7 +51,7 @@ private:
 	int					hvsWidgetIndex = 0;
 	macFiuNv		   	*fiu = NULL;	//故障注入箱 FaultInsertUnit 0x0200	
 	int					fiuWidgetIndex = 0;
-	macSP		   	*sp = NULL;	//信号调理箱 SignalProcessBox 0x0400	
+	macSP		   		*sp = NULL;	//信号调理箱 SignalProcessBox 0x0400	
 	int					spWidgetIndex = 0;
 
 	macUdpMulcast		*MulcastListen;

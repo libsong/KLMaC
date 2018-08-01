@@ -15,6 +15,8 @@
 #include <QLabel>
 #include <QAction>
 #include <QProcess>
+#include <QDesktopServices>
+#include <QVBoxLayout>
 
 #include "we_shell.h"
 #include "we_types.h"
@@ -30,7 +32,8 @@ public:
 protected slots:
 	void showMenu();
 	void actionSlots();
-
+	void aboutDialog();
+	void useHelp();
 	//
 	void makeSsh(QString ip, QString usr, QString pwd);
 
@@ -51,6 +54,10 @@ private:
 	QAction *actionOpen;
 	QAction *actionSave;
 	QAction *actionQuit;
+
+	QMenu *helpMenu;
+	QAction *actionAbout;
+	QAction *actionHelp;
 
 	QMenu *editMenu;
 	QAction *actionSsh;
@@ -77,7 +84,7 @@ class macLogin : public QDialog
 	Q_OBJECT
 
 public:
-	macLogin ();
+	macLogin (QWidget *parent = Q_NULLPTR);
 	~macLogin();
 
 	void  loadcfg();

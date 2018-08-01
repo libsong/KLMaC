@@ -179,11 +179,11 @@ void macMainWidget::makeDevWidget(void *info)
 		}
 	}
 
-	if (tmp.devType == 0x0400) //TODO
+	if (tmp.devType == 0x0400) 
 	{
 		if (sp == NULL)
 		{
-			sp = new macSP;
+			sp = new macSP;	//创建比较耗时卡界面,后续放线程中改进
 			sp->mcu = tmp;
 			sp->mcuInfoTable();
 
@@ -281,3 +281,4 @@ void SubThread3::run()
 		sleep(1);
 	}
 }
+

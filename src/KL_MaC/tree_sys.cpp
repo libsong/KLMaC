@@ -10,7 +10,7 @@
 macTreeSys::macTreeSys(QTreeWidget *parent)
 	: QTreeWidget(parent)
 {
-	setFixedHeight(550);
+	setFixedHeight(500);
 	setFixedWidth(150);
 	setStyleSheet("background-color:rgb(80,194,194);");
 	setHeaderHidden(true);
