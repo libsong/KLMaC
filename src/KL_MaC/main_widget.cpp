@@ -16,7 +16,7 @@ macMainWidget::macMainWidget(QWidget *parent)
 	//title
 	title_widget = new macTitleWidget();
 	installEventFilter(title_widget);
-	setWindowTitle("KL MaC - Manager & Control");
+	setWindowTitle("KL iMaC - interface Manager & Control");
 	setWindowIcon(QIcon(":/KL_MaC/klmac_ico"));
 
 	//控制操作等,多页面切换
@@ -101,6 +101,16 @@ void macMainWidget::switchPage(McuInfo_t *val)
 		}
 	}	
 
+	if (tmp.devType == 0x0101)	
+	{
+		if (psb != NULL)
+		{
+			psb->mcu = tmp;
+			psb->mcuInfoTable();
+			showStack->setCurrentIndex(psbWidgetIndex);
+		}
+	}
+
 	if (tmp.devType == 0x0200)
 	{
 		if (fiu != NULL)
@@ -148,6 +158,20 @@ void macMainWidget::makeDevWidget(void *info)
 			showStack->addWidget(ppb);
 			ppbWidgetIndex = showStack->count() -1;
 			qDebug() << "!!!!! ppbWidgetIndex = " << ppbWidgetIndex;
+		}
+	}
+
+	if (tmp.devType == 0x0101)
+	{
+		if (psb == NULL)
+		{
+			psb = new macPs;
+			psb->mcu = tmp;
+			psb->mcuInfoTable();
+
+			showStack->addWidget(psb);
+			psbWidgetIndex = showStack->count() - 1;
+			qDebug() << "!!!!! ppbWidgetIndex = " << psbWidgetIndex;
 		}
 	}
 

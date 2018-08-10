@@ -271,6 +271,11 @@ void macTreeSys::MakeRemoteLeaf(void * val)
 			memset(name_tmp, 0, 128);
 			sprintf(name_tmp, "电源分配箱");
 		}	
+		if (tmp.devType == 0x0101)
+		{
+			memset(name_tmp, 0, 128);
+			sprintf(name_tmp, "电源模拟箱");
+		}
 		if (tmp.devType == 0x0200)
 		{
 			memset(name_tmp, 0, 128);
@@ -317,6 +322,11 @@ void macTreeSys::MakeRemoteLeaf(void * val)
 				{
 					memset(name_tmp, 0, 128);
 					sprintf(name_tmp, "电源分配箱");
+				}
+				if (tmp.devType == 0x0101)
+				{
+					memset(name_tmp, 0, 128);
+					sprintf(name_tmp, "电源模拟箱");
 				}
 				if (tmp.devType == 0x0200)
 				{

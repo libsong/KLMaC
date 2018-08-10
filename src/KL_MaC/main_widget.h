@@ -17,6 +17,7 @@
 #include "SignalProcess.h"
 #include "udp_mulcast.h"
 #include "we_types.h"
+#include "PowerSimuBox.h"
 
 
 class macMainWidget : public macShadowWidget
@@ -47,6 +48,8 @@ private:
 	//设备widget类
 	macPowerSupplyBox	*ppb = NULL;	//电源分配箱 PowerSupplyBox 0x0100	
 	int					ppbWidgetIndex = 0;
+	macPs				*psb = NULL;	//电源模拟箱 PowerSupplyBox 0x0101	
+	int					psbWidgetIndex = 0;
 	macHighValtage   	*hvs = NULL;	//高压模拟器 HighValtageBox 0x0300	
 	int					hvsWidgetIndex = 0;
 	macFiuNv		   	*fiu = NULL;	//故障注入箱 FaultInsertUnit 0x0200	

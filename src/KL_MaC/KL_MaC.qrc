@@ -6,5 +6,6 @@
         <file alias="titlemin">Resources/img/sysbutt/min.png</file>
         <file alias="set">Resources/img/sysbutt/setting.png</file>
         <file>Resources/img/load/loading.png</file>
+        <file>Resources/img/sysbutt/pwr_switch.png</file>
     </qresource>
 </RCC>

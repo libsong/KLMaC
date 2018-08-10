@@ -8,7 +8,7 @@ macHighValtage::macHighValtage(QGroupBox *parent)
 	this->setTitle(weChinese2LocalCode("控制与管理"));
 
 	QGroupBox *act = new QGroupBox;
-	QGroupBox *relay_grp = new QGroupBox;
+	QGroupBox *relay_grp = new QGroupBox(weChinese2LocalCode("取消选中所有Relay后激活即可复位所有继电器，包括主正负电阻值的设置"));
 	QGroupBox *mag = new QGroupBox(weChinese2LocalCode("双击IP区域单元格可修改设备信息"));
 
 	v1G = new QLabel(tr("VR12(V)"));
@@ -57,10 +57,43 @@ macHighValtage::macHighValtage(QGroupBox *parent)
 	relaytableButt->setFixedWidth(150);
 	connect(relaytableButt, SIGNAL(clicked()), this, SLOT(relayactive())); 
 
-	cleartableButt = new QCheckBox(weChinese2LocalCode("点击取消选中所有Relay"));
-	cleartableButt->setChecked(true);
+	cleartableButt = new QCheckBox(weChinese2LocalCode("点击选中所有Relay"));
+	cleartableButt->setChecked(false);
 	connect(cleartableButt, SIGNAL(stateChanged(int)), this, SLOT(relayclear(int)));
 
+	//
+	m_actResZ = new QPushButton(weChinese2LocalCode("激活主正电阻"));
+	m_actResZ->setToolTip(weChinese2LocalCode("Res_Pos y = 150+(x -150)/100"));
+	connect(m_actResZ, SIGNAL(clicked()), this, SLOT(ResZAct()));
+	m_actResF = new QPushButton(weChinese2LocalCode("激活主负电阻"));
+	m_actResF->setToolTip(weChinese2LocalCode("Res_Neg y = 150+(x -150)/100"));
+	connect(m_actResF, SIGNAL(clicked()), this, SLOT(ResFAct()));
+
+	m_ResZ = new QLineEdit;
+	m_ResZ->setPlaceholderText(weChinese2LocalCode("x = 150 ~ 1048725 Ω")); // 2'11 + 150
+	m_ResZ->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+	m_ResZ->setValidator(new QIntValidator(150, 1048725, m_ResZ));
+
+	m_ResF = new QLineEdit;
+	m_ResF->setPlaceholderText(weChinese2LocalCode("x = 150 ~ 1048725 Ω"));
+	m_ResF->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+	m_ResF->setValidator(new QIntValidator(150, 1048725, m_ResF));
+
+	//
+	QHBoxLayout *editLy = new QHBoxLayout;
+	editLy->addWidget(cleartableButt);
+	editLy->addStretch(3);
+	editLy->addWidget(m_ResZ);
+	editLy->addStretch(3);
+	editLy->addWidget(m_ResF);
+	QHBoxLayout *btnLy = new QHBoxLayout;
+	btnLy->addWidget(relaytableButt);
+	btnLy->addStretch(3);
+	btnLy->addWidget(m_actResZ);
+	btnLy->addStretch(3);
+	btnLy->addWidget(m_actResF);
+
+	//
 	relaytable = new QTableWidget;
 	relaytable->setColumnCount(8);
 	relaytable->setRowCount(11);
@@ -94,14 +127,16 @@ macHighValtage::macHighValtage(QGroupBox *parent)
 			relaytable->setEditTriggers(QAbstractItemView::NoEditTriggers);//表格不可编辑
 			//relaytable->setColumnWidth(j, relaytable->size().width() / 1.8);
 			QTableWidgetItem *check = new QTableWidgetItem;
-			check->setCheckState(Qt::Checked);
+			check->setCheckState(Qt::Unchecked);
 			relaytable->setItem(i, j, check); //插入复选框
 		}
 	}
 
 	QVBoxLayout *relaylayout = new QVBoxLayout; 
-	relaylayout->addWidget(cleartableButt);
-	relaylayout->addWidget(relaytableButt);
+	relaylayout->addLayout(editLy);
+	relaylayout->addLayout(btnLy);
+	//relaylayout->addWidget(cleartableButt);
+	//relaylayout->addWidget(relaytableButt);
 	relaylayout->addWidget(relaytable);
 	relay_grp->setLayout(relaylayout);
 
@@ -268,6 +303,86 @@ void macHighValtage::SetIpChange()
 	u8 crc = 0;
 	qint64 rv = 0;
 	QByteArray relay_data;
+	relay_data.resize(53);
+	for (int i = 0; i < 8; i++)
+	{
+		relay_data[i] = 0xbe;
+	}
+
+	relay_data[8] = COMM_CMD_IP;
+	relay_data[9] = 0x0e;//len
+
+	for (int i = 0; i < 4; i++)
+	{
+		relay_data[10 + i] = nIP[i];
+		crc += nIP[i];
+	}
+	for (int i = 0; i < 2; i++)
+	{
+		relay_data[14 + i] = nPort[i];
+		crc += nPort[i];
+	}
+	for (int i = 0; i < 4; i++)
+	{
+		relay_data[16 + i] = nNm[i];
+		crc += nNm[i];
+	}
+	for (int i = 0; i < 4; i++)
+	{
+		relay_data[20 + i] = nGw[i];
+		crc += nGw[i];
+	}
+
+	relay_data[24] = crc;//crc
+
+	for (int i = 25; i < 33; i++)
+	{
+		relay_data[i] = 0xff;
+	}
+
+	//设备mcu去判断是否和其UID匹配，匹配后更改
+	u8 tmp[12] = { 0 };
+	memcpy(&tmp, &mcu.mcuUID[0], 12);
+	for (int i = 33; i < 45; i++)
+	{
+		relay_data[i] = tmp[i - 33];
+	}
+
+	for (int i = 45; i < 53; i++)
+	{
+		relay_data[i] = 0xed;
+	}
+
+	QUdpSocket *uMulSocket = new QUdpSocket;
+	if (uMulSocket->bind(QHostAddress::AnyIPv4, UDPMULCASTSEND_PORT, QUdpSocket::ShareAddress))
+	{
+		uMulSocket->setSocketOption(QAbstractSocket::MulticastLoopbackOption, 0);//禁止本机接收
+		uMulSocket->joinMulticastGroup(QHostAddress(UDPMULCASTSEND_IP));
+		uMulSocket->setSocketOption(QAbstractSocket::ReceiveBufferSizeSocketOption, 1024 * 1024 * 1);//设置缓冲区
+}
+	else
+	{
+		QMessageBox::information(NULL, "Warning", weChinese2LocalCode("信息修改 ：本地端口绑定失败！"), QMessageBox::Yes, QMessageBox::Yes);
+		return;
+	}
+
+	rv = uMulSocket->writeDatagram(relay_data, relay_data.length(), QHostAddress(UDPMULCASTSEND_IP), UDPMULCASTSEND_PORT);
+	if (rv != relay_data.length())
+	{
+		QMessageBox::information(NULL, "Warning", "信息修改 ：写失败！", QMessageBox::Yes, QMessageBox::Yes);
+	}
+	else
+	{
+		g_disText << weChinese2LocalCode("Fiu 设备网络信息修改完成 .");
+	}
+
+	uMulSocket->leaveMulticastGroup(QHostAddress(UDPMULCASTSEND_IP));
+	uMulSocket->disconnect();
+	delete uMulSocket;
+#if 0
+	u8 crc = 0;
+	qint64 rv = 0;
+	QByteArray relay_data;
 	relay_data.resize(41);
 	for (int i = 0; i < 8; i++)
 	{
@@ -322,6 +437,7 @@ void macHighValtage::SetIpChange()
 
 	uSocket->disconnect();
 	delete uSocket;
+#endif
 }
 
 void macHighValtage::ipChange(int row, int col)
@@ -397,6 +513,250 @@ void macHighValtage::ipChange(int row, int col)
 		SetIpChange();
 		QMessageBox::information(NULL, "Warning", weChinese2LocalCode("IP等信息已设置为新值，重启设备后生效"), QMessageBox::Yes, QMessageBox::Yes);
 	}		
+}
+
+void macHighValtage::ResZAct()
+{
+	m_actResZ->setEnabled(false);//
+	qint32 resZ = m_ResZ->text().toUInt() - 150;
+	if (resZ < 0)
+	{
+		QMessageBox::information(NULL, "Warning", weChinese2LocalCode("电阻值最小为 150 Ω"), QMessageBox::Yes, QMessageBox::Yes);
+		m_actResZ->setEnabled(true);
+		return ;
+	}
+	resZ = resZ / 100;
+
+	qint64 rv = 0;
+	u8 crc = 0;
+	QUdpSocket *uSocket = new QUdpSocket();
+
+	QByteArray relay_data;
+	relay_data.resize(38);
+	for (int i = 0; i < 8; i++)
+	{
+		relay_data[i] = 0xbe;
+	}
+	for (int i = 8; i < 38; i++)
+	{
+		relay_data[i] = 0;
+	}
+
+	relay_data[8] = COMM_CMD_RELAY_CONF;
+	relay_data[9] = 0xb;//len
+
+	relay_data[14] = relay_data[14] | (1 << 5); //relay38 主正总开关
+	if (resZ & 0x1)
+	{
+		relay_data[14] = relay_data[14] | (1 << 6);
+	}
+	if ((resZ >> 1) & 0x1)
+	{
+		relay_data[14] = relay_data[14] | (1 << 7);
+	}
+
+	for (int j = 0; j < 8; j++)
+	{
+		if ((resZ >> (j+2)) & 0x1)
+		{
+			relay_data[15] = relay_data[15] | (1 << j);
+		}
+	}
+	for (int j = 0; j < 8; j++)
+	{
+		if ((resZ >> (j + 10)) & 0x1)
+		{
+			relay_data[16] = relay_data[16] | (1 << j);
+		}
+	}
+	if ((resZ >> 18) & 0x1)
+	{
+		relay_data[17] = relay_data[17] | 1;
+	}
+
+	for (int j = 0; j<11; j++)
+	{
+		crc += relay_data[j + 10];
+	}
+
+	relay_data[21] = crc;
+
+	for (int i = 22; i < 30; i++)
+	{
+		relay_data[i] = 0xff;
+	}
+	for (int i = 30; i < 38; i++)
+	{
+		relay_data[i] = 0xed;
+	}
+
+	u16 Port = mcu.port;
+	char IP[32] = { 0 };
+	sprintf(IP, "%d.%d.%d.%d", mcu.mcuIP[0], mcu.mcuIP[1], mcu.mcuIP[2], mcu.mcuIP[3]);
+
+	rv = uSocket->writeDatagram(relay_data, relay_data.length(), QHostAddress(IP), Port);
+	qDebug() << "IP:" << IP << "port:" << Port << " writeDatagram : " << relay_data.toHex() << " rv:" << rv;
+	if (rv != relay_data.length())
+	{
+		//QMessageBox::information(NULL, "Warning", "Send Message Failed !", QMessageBox::Yes, QMessageBox::Yes);
+	}
+
+
+	relay_data;
+	relay_data.resize(28);
+	for (int i = 0; i < 8; i++)
+	{
+		relay_data[i] = 0xbe;
+	}
+
+	relay_data[8] = COMM_CMD_RELAY_ACTIVE;
+	relay_data[9] = 0x1;//len
+
+	relay_data[10] = 1;
+	relay_data[11] = 1;
+
+	for (int i = 12; i < 20; i++)
+	{
+		relay_data[i] = 0xff;
+	}
+	for (int i = 20; i < 28; i++)
+	{
+		relay_data[i] = 0xed;
+	}
+
+	rv = uSocket->writeDatagram(relay_data, relay_data.length(), QHostAddress(IP), Port);
+	if (rv != relay_data.length())
+	{
+		//QMessageBox::information(NULL, "Warning", "Send Message Failed !", QMessageBox::Yes, QMessageBox::Yes);
+	}
+	else
+	{
+		g_disText << weChinese2LocalCode("高压模拟器 主正电阻已激活");
+	}
+
+	uSocket->disconnect();
+	delete uSocket;
+
+	m_actResZ->setEnabled(true);
+}
+
+void macHighValtage::ResFAct()
+{
+	m_actResF->setEnabled(false);//
+	qint32 resF = m_ResF->text().toUInt() - 150;
+	if (resF < 0)
+	{
+		QMessageBox::information(NULL, "Warning", weChinese2LocalCode("电阻值最小为 150 Ω"), QMessageBox::Yes, QMessageBox::Yes);
+		m_actResF->setEnabled(true);
+		return;
+	}
+	resF = resF / 100;
+
+	qint64 rv = 0;
+	u8 crc = 0;
+	QUdpSocket *uSocket = new QUdpSocket();
+
+	QByteArray relay_data;
+	relay_data.resize(38);
+	for (int i = 0; i < 8; i++)
+	{
+		relay_data[i] = 0xbe;
+	}
+	for (int i = 8; i < 38; i++)
+	{
+		relay_data[i] = 0;
+	}
+
+	relay_data[8] = COMM_CMD_RELAY_CONF;
+	relay_data[9] = 0xb;//len
+
+	relay_data[17] = relay_data[17] | (1 << 1); //relay58 主负总开关
+	for (int j = 0; j < 6; j++)
+	{
+		if ((resF >> j) & 0x1)
+		{
+			relay_data[17] = relay_data[17] | (1 << (j+2));
+		}
+	}
+	for (int j = 6; j < 14; j++)
+	{
+		if ((resF >> j) & 0x1)
+		{
+			relay_data[18] = relay_data[18] | (1 << (j -6));
+		}
+	}
+	for (int j = 14; j < 19; j++)
+	{
+		if ((resF >> j) & 0x1)
+		{
+			relay_data[19] = relay_data[19] | (1 << (j - 14));
+		}
+	}
+
+	for (int j = 0; j<11; j++)
+	{
+		crc += relay_data[j + 10];
+	}
+
+	relay_data[21] = crc;
+
+	for (int i = 22; i < 30; i++)
+	{
+		relay_data[i] = 0xff;
+	}
+	for (int i = 30; i < 38; i++)
+	{
+		relay_data[i] = 0xed;
+	}
+
+	u16 Port = mcu.port;
+	char IP[32] = { 0 };
+	sprintf(IP, "%d.%d.%d.%d", mcu.mcuIP[0], mcu.mcuIP[1], mcu.mcuIP[2], mcu.mcuIP[3]);
+
+	rv = uSocket->writeDatagram(relay_data, relay_data.length(), QHostAddress(IP), Port);
+	qDebug() << "IP:" << IP << "port:" << Port << " writeDatagram : " << relay_data.toHex() << " rv:" << rv;
+	if (rv != relay_data.length())
+	{
+		//QMessageBox::information(NULL, "Warning", "Send Message Failed !", QMessageBox::Yes, QMessageBox::Yes);
+	}
+
+
+	relay_data;
+	relay_data.resize(28);
+	for (int i = 0; i < 8; i++)
+	{
+		relay_data[i] = 0xbe;
+	}
+
+	relay_data[8] = COMM_CMD_RELAY_ACTIVE;
+	relay_data[9] = 0x1;//len
+
+	relay_data[10] = 1;
+	relay_data[11] = 1;
+
+	for (int i = 12; i < 20; i++)
+	{
+		relay_data[i] = 0xff;
+	}
+	for (int i = 20; i < 28; i++)
+	{
+		relay_data[i] = 0xed;
+	}
+
+	rv = uSocket->writeDatagram(relay_data, relay_data.length(), QHostAddress(IP), Port);
+	if (rv != relay_data.length())
+	{
+		//QMessageBox::information(NULL, "Warning", "Send Message Failed !", QMessageBox::Yes, QMessageBox::Yes);
+	}
+	else
+	{
+		g_disText << weChinese2LocalCode("高压模拟器 主负电阻已激活");
+	}
+
+	uSocket->disconnect();
+	delete uSocket;
+
+	m_actResF->setEnabled(true);
 }
 
 void macHighValtage::EmitQuerySig()

@@ -129,8 +129,8 @@ void queryThread::giveQueryedVal(int _t1, void * _t2)
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 struct qt_meta_stringdata_macHighValtage_t {
-    QByteArrayData data[16];
-    char stringdata0[112];
+    QByteArrayData data[18];
+    char stringdata0[128];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -154,13 +154,15 @@ QT_MOC_LITERAL(11, 78, 10), // "relayclear"
 QT_MOC_LITERAL(12, 89, 5), // "check"
 QT_MOC_LITERAL(13, 95, 8), // "ipChange"
 QT_MOC_LITERAL(14, 104, 3), // "row"
-QT_MOC_LITERAL(15, 108, 3) // "col"
+QT_MOC_LITERAL(15, 108, 3), // "col"
+QT_MOC_LITERAL(16, 112, 7), // "ResZAct"
+QT_MOC_LITERAL(17, 120, 7) // "ResFAct"
 
     },
     "macHighValtage\0giveQueryIp\0\0u8*\0ip\0"
     "u16\0p\0EmitQuerySig\0setVal\0type\0"
     "relayactive\0relayclear\0check\0ipChange\0"
-    "row\0col"
+    "row\0col\0ResZAct\0ResFAct"
 };
 #undef QT_MOC_LITERAL
 
@@ -170,7 +172,7 @@ static const uint qt_meta_data_macHighValtage[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -178,14 +180,16 @@ static const uint qt_meta_data_macHighValtage[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    2,   44,    2, 0x06 /* Public */,
+       1,    2,   54,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       7,    0,   49,    2, 0x0a /* Public */,
-       8,    2,   50,    2, 0x0a /* Public */,
-      10,    0,   55,    2, 0x0a /* Public */,
-      11,    1,   56,    2, 0x0a /* Public */,
-      13,    2,   59,    2, 0x0a /* Public */,
+       7,    0,   59,    2, 0x0a /* Public */,
+       8,    2,   60,    2, 0x0a /* Public */,
+      10,    0,   65,    2, 0x0a /* Public */,
+      11,    1,   66,    2, 0x0a /* Public */,
+      13,    2,   69,    2, 0x0a /* Public */,
+      16,    0,   74,    2, 0x0a /* Public */,
+      17,    0,   75,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3, 0x80000000 | 5,    4,    6,
@@ -196,6 +200,8 @@ static const uint qt_meta_data_macHighValtage[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,   12,
     QMetaType::Void, QMetaType::Int, QMetaType::Int,   14,   15,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -212,6 +218,8 @@ void macHighValtage::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 3: _t->relayactive(); break;
         case 4: _t->relayclear((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 5: _t->ipChange((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 6: _t->ResZAct(); break;
+        case 7: _t->ResFAct(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -252,13 +260,13 @@ int macHighValtage::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 8)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 6;
+        _id -= 8;
     }
     return _id;
 }

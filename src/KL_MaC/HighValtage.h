@@ -12,12 +12,14 @@
 #include <QMessageBox>
 #include <QLabel>
 #include <QThread>
+#include <QLineEdit>
 
 #include <Winsock2.h>
 #include <Windows.h>
 
 #include "common.h"
 #include "we_types.h"
+#include "udp_mulcast.h"
 
 //https://blog.csdn.net/polokang/article/details/6696982
 
@@ -71,6 +73,9 @@ public slots:
 	void relayclear(int check);
 	void ipChange(int row, int col);
 
+	void ResZAct();
+	void ResFAct();
+
 private:
 	QLabel			*v1G;
 	QLabel			*v1G_val;
@@ -83,6 +88,11 @@ private:
 	QLabel			*hall;
 	QLabel			*hall_val;
 	QPushButton		*activeButt;
+
+	QPushButton		*m_actResZ;
+	QPushButton		*m_actResF;
+	QLineEdit		*m_ResZ;
+	QLineEdit		*m_ResF;	
 
 	QTableWidget	*relaytable;
 	QPushButton		*relaytableButt;

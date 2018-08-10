@@ -37,7 +37,7 @@ macMenuButton::macMenuButton(QWidget *parent /*= 0*/)
 	menu->addSeparator();
 	helpMenu = menu->addMenu(weChinese2LocalCode("帮助")); 
 	actionAbout = helpMenu->addAction(weChinese2LocalCode("关于 ..."), this, SLOT(aboutDialog()));
-	actionHelp = helpMenu->addAction(weChinese2LocalCode("KL MaC 使用说明"),this,SLOT(useHelp()));
+	actionHelp = helpMenu->addAction(weChinese2LocalCode("KL iMaC 使用说明"),this,SLOT(useHelp()));
 
 
 	//退出

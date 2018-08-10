@@ -1,5 +1,113 @@
-﻿生成启动时间为 2018/8/1 12:38:46。
+﻿生成启动时间为 2018/8/10 10:59:48。
+     1>项目“E:\aaProduct\sf\KlMaC\src\KL_MaC\KL_MaC.vcxproj”在节点 2 上(Rebuild 个目标)。
+     1>QtFinalize:
+         Moc'ing main_widget.h...
+         Moc'ing shadow_widget.h...
+         Moc'ing title_widget.h...
+         Moc'ing push_button.h...
+         Moc'ing udp_mulcast.h...
+         Moc'ing LocalWidget.h...
+         Moc'ing PowerSupplyBox.h...
+         Moc'ing HighValtage.h...
+         Moc'ing FiuNv.h...
+         Moc'ing PowerSimuBox.h...
+         Moc'ing RepaintControl.h...
+         Moc'ing we_shell.h...
+         Moc'ing SignalProcess.h...
+         Moc'ing tree_sys.h...
+         Moc'ing menu_button.h...
+         Rcc'ing KL_MaC.qrc...
+       ClCompile:
+         D:\vs\exe2015\VC\bin\CL.exe /c /I.\GeneratedFiles /I. /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include /I.\GeneratedFiles\Debug /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtCore /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtGui /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtANGLE /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtWidgets /IE:\aaProduct\sf\KlMaC\src\KL_MaC\inc /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtNetwork /Zi /nologo /W1 /WX- /MP /Od /Oy- /D UNICODE /D WIN32 /D WIN64 /D QT_DLL /D QT_CORE_LIB /D QT_GUI_LIB /D QT_WIDGETS_LIB /D QT_NETWORK_LIB /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt FiuNv.cpp HighValtage.cpp LocalWidget.cpp main_widget.cpp main.cpp menu_button.cpp PowerSimuBox.cpp PowerSupplyBox.cpp push_button.cpp shadow_widget.cpp SignalProcess.cpp RepaintControl.cpp title_widget.cpp tree_sys.cpp udp_mulcast.cpp we_shell.cpp we_types.cpp .\GeneratedFiles\Debug\moc_main_widget.cpp .\GeneratedFiles\Debug\moc_shadow_widget.cpp .\GeneratedFiles\Debug\moc_title_widget.cpp .\GeneratedFiles\Debug\moc_push_button.cpp .\GeneratedFiles\Debug\moc_udp_mulcast.cpp .\GeneratedFiles\Debug\moc_LocalWidget.cpp .\GeneratedFiles\Debug\moc_PowerSupplyBox.cpp .\GeneratedFiles\Debug\moc_HighValtage.cpp .\GeneratedFiles\Debug\moc_FiuNv.cpp .\GeneratedFiles\Debug\moc_PowerSimuBox.cpp .\GeneratedFiles\Debug\moc_RepaintControl.cpp .\GeneratedFiles\Debug\moc_we_shell.cpp .\GeneratedFiles\Debug\moc_SignalProcess.cpp .\GeneratedFiles\Debug\moc_tree_sys.cpp .\GeneratedFiles\Debug\moc_menu_button.cpp .\GeneratedFiles\qrc_KL_MaC.cpp
+         FiuNv.cpp
+         HighValtage.cpp
+         LocalWidget.cpp
+         main_widget.cpp
+         main.cpp
+         menu_button.cpp
+         PowerSimuBox.cpp
+         PowerSupplyBox.cpp
+         push_button.cpp
+         shadow_widget.cpp
+         SignalProcess.cpp
+         RepaintControl.cpp
+         title_widget.cpp
+         tree_sys.cpp
+         udp_mulcast.cpp
+         we_shell.cpp
+         we_types.cpp
+         moc_main_widget.cpp
+         moc_shadow_widget.cpp
+         moc_title_widget.cpp
+         moc_push_button.cpp
+         moc_udp_mulcast.cpp
+         moc_LocalWidget.cpp
+         moc_PowerSupplyBox.cpp
+         moc_HighValtage.cpp
+         moc_FiuNv.cpp
+         moc_PowerSimuBox.cpp
+         moc_RepaintControl.cpp
+         moc_we_shell.cpp
+         moc_SignalProcess.cpp
+         moc_tree_sys.cpp
+         moc_menu_button.cpp
+         qrc_KL_MaC.cpp
+       ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /l"0x0409" /nologo /fo"Debug\KL_MaC.res" KL_MaC.rc 
+       Link:
+         D:\vs\exe2015\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\aaProduct\sf\KlMaC\src\Win32\Debug\\KL_iMaC.exe" /NOLOGO /LIBPATH:E:\aaProduct\sf\KlMaC\src\KL_MaC\lib /LIBPATH:D:\Qt\5.8.0\vs_exe\5.8\msvc2015\lib qtmaind.lib Qt5Cored.lib Iphlpapi.lib Qt5Guid.lib Qt5Widgetsd.lib Qt5Networkd.lib libeay32.lib libssh2.lib ssleay32.lib zlibwapi.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"E:\aaProduct\sf\KlMaC\src\Win32\Debug\KL_iMaC.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\aaProduct\sf\KlMaC\src\Win32\Debug\KL_iMaC.lib" /MACHINE:X86 /SAFESEH /NODEFAULTLIB:msvcrt.lib Debug\KL_MaC.res
+         Debug\FiuNv.obj
+         Debug\HighValtage.obj
+         Debug\LocalWidget.obj
+         Debug\main_widget.obj
+         Debug\main.obj
+         Debug\menu_button.obj
+         Debug\PowerSimuBox.obj
+         Debug\PowerSupplyBox.obj
+         Debug\push_button.obj
+         Debug\shadow_widget.obj
+         Debug\SignalProcess.obj
+         Debug\RepaintControl.obj
+         Debug\title_widget.obj
+         Debug\tree_sys.obj
+         Debug\udp_mulcast.obj
+         Debug\we_shell.obj
+         Debug\we_types.obj
+         Debug\moc_main_widget.obj
+         Debug\moc_shadow_widget.obj
+         Debug\moc_title_widget.obj
+         Debug\moc_push_button.obj
+         Debug\moc_udp_mulcast.obj
+         Debug\moc_LocalWidget.obj
+         Debug\moc_PowerSupplyBox.obj
+         Debug\moc_HighValtage.obj
+         Debug\moc_FiuNv.obj
+         Debug\moc_PowerSimuBox.obj
+         Debug\moc_RepaintControl.obj
+         Debug\moc_we_shell.obj
+         Debug\moc_SignalProcess.obj
+         Debug\moc_tree_sys.obj
+         Debug\moc_menu_button.obj
+         Debug\qrc_KL_MaC.obj
+           正在创建库 E:\aaProduct\sf\KlMaC\src\Win32\Debug\KL_iMaC.lib 和对象 E:\aaProduct\sf\KlMaC\src\Win32\Debug\KL_iMaC.exp
+     1>libssh2.lib(channel.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“libssh2.lib(channel.obj)”或在“E:\aaProduct\sf\KlMaC\src\Win32\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libssh2.lib(comp.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“libssh2.lib(comp.obj)”或在“E:\aaProduct\sf\KlMaC\src\Win32\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libssh2.lib(crypt.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“libssh2.lib(crypt.obj)”或在“E:\aaProduct\sf\KlMaC\src\Win32\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libssh2.lib(global.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“libssh2.lib(global.obj)”或在“E:\aaProduct\sf\KlMaC\src\Win32\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libssh2.lib(hostkey.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“libssh2.lib(hostkey.obj)”或在“E:\aaProduct\sf\KlMaC\src\Win32\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libssh2.lib(keepalive.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“libssh2.lib(keepalive.obj)”或在“E:\aaProduct\sf\KlMaC\src\Win32\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libssh2.lib(kex.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“libssh2.lib(kex.obj)”或在“E:\aaProduct\sf\KlMaC\src\Win32\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libssh2.lib(knownhost.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“libssh2.lib(knownhost.obj)”或在“E:\aaProduct\sf\KlMaC\src\Win32\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libssh2.lib(mac.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“libssh2.lib(mac.obj)”或在“E:\aaProduct\sf\KlMaC\src\Win32\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libssh2.lib(misc.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“libssh2.lib(misc.obj)”或在“E:\aaProduct\sf\KlMaC\src\Win32\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libssh2.lib(openssl.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“libssh2.lib(openssl.obj)”或在“E:\aaProduct\sf\KlMaC\src\Win32\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libssh2.lib(packet.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“libssh2.lib(packet.obj)”或在“E:\aaProduct\sf\KlMaC\src\Win32\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libssh2.lib(session.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“libssh2.lib(session.obj)”或在“E:\aaProduct\sf\KlMaC\src\Win32\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libssh2.lib(transport.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“libssh2.lib(transport.obj)”或在“E:\aaProduct\sf\KlMaC\src\Win32\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libssh2.lib(userauth.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“libssh2.lib(userauth.obj)”或在“E:\aaProduct\sf\KlMaC\src\Win32\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+         KL_MaC.vcxproj -> E:\aaProduct\sf\KlMaC\src\Win32\Debug\KL_iMaC.exe
+     1>已完成生成项目“E:\aaProduct\sf\KlMaC\src\KL_MaC\KL_MaC.vcxproj”(Rebuild 个目标)的操作。
 
 已成功生成。
 
-已用时间 00:00:00.33
+已用时间 00:00:29.59
