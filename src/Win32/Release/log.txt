@@ -132,3 +132,59 @@ Message:disTextBrowerTh in File:  Line:0  Function:  DateTime:2018-08-09 15:34:3
 Message:disTextBrowerTh in File:  Line:0  Function:  DateTime:2018-08-09 15:34:35 周四
 Message:disTextBrowerTh in File:  Line:0  Function:  DateTime:2018-08-09 15:34:35 周四
 Message:disTextBrowerTh in File:  Line:0  Function:  DateTime:2018-08-09 15:34:35 周四
+Message:main widget start ...
+ File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:ProcessorType :  586 File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:NumberOfProcessors :  4 File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:PageSize :  4096 File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:MaximumApplicationAddress :  0x7ffeffff File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:MinimumApplicationAddress :  0x10000 File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:MemoryLoad :  20 File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:TotalPhys :  16880472064 File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:AvailPhys :  13499514880 File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:TotalVirtual :  2147352576 File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:AvailVirtual :  2007605248 File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:------------------------------------------------------------
+ File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:Adapter Name: 	{FAEBBD96-35BC-4CD9-A67B-DC0B5F016A11}
+ File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:Adapter Description: 	Intel(R) Wireless-N 7260
+ File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:Adapter Address: 	 File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:48- File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:51- File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:B7- File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:3E- File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:16- File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:D8
+ File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:Adapter Type: 	71
+ File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:IP Address: 	0.0.0.0
+ File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:IP Mask: 	0.0.0.0
+ File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:------------------------------------------------------------
+ File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:Adapter Name: 	{61523BFB-FAED-40F7-9EBF-730C1DDEE634}
+ File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:Adapter Description: 	Realtek PCIe GBE Family Controller
+ File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:Adapter Address: 	 File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:68- File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:F7- File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:28- File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:3D- File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:02- File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:F3
+ File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:Adapter Type: 	6
+ File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:IP Address: 	192.168.2.69
+ File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:IP Mask: 	255.255.255.0
+ File:  Line:0  Function:  DateTime:2018-08-13 17:29:28 周一
+Message:udp mulcast init done ... File:  Line:0  Function:  DateTime:2018-08-13 17:29:30 周一
+Message:!!!!! spWidgetIndex =  1 File:  Line:0  Function:  DateTime:2018-08-13 17:29:32 周一
+Message:!!!!! hvsWidgetIndex =  2 File:  Line:0  Function:  DateTime:2018-08-13 17:29:32 周一
+Message:left click at col: 1 File:  Line:0  Function:  DateTime:2018-08-13 17:29:41 周一

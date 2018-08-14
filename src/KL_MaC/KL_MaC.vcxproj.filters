@@ -75,13 +75,13 @@
     <ClCompile Include="FiuNv.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SignalProcess.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PowerSimuBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RepaintControl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SignalAdjust.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -127,13 +127,13 @@
     <QtMoc Include="FiuNv.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="SignalProcess.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="PowerSimuBox.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="RepaintControl.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="SignalAdjust.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

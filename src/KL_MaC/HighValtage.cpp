@@ -6,9 +6,10 @@ macHighValtage::macHighValtage(QGroupBox *parent)
 	: QGroupBox(parent)
 {
 	this->setTitle(weChinese2LocalCode("控制与管理"));
+	setFocusPolicy(Qt::NoFocus);
 
 	QGroupBox *act = new QGroupBox;
-	QGroupBox *relay_grp = new QGroupBox(weChinese2LocalCode("取消选中所有Relay后激活即可复位所有继电器，包括主正负电阻值的设置"));
+	QGroupBox *relay_grp = new QGroupBox;
 	QGroupBox *mag = new QGroupBox(weChinese2LocalCode("双击IP区域单元格可修改设备信息"));
 
 	v1G = new QLabel(tr("VR12(V)"));
@@ -70,12 +71,14 @@ macHighValtage::macHighValtage(QGroupBox *parent)
 	connect(m_actResF, SIGNAL(clicked()), this, SLOT(ResFAct()));
 
 	m_ResZ = new QLineEdit;
-	m_ResZ->setPlaceholderText(weChinese2LocalCode("x = 150 ~ 1048725 Ω")); // 2'11 + 150
+	m_ResZ->setPlaceholderText(weChinese2LocalCode("x = 150 ~ 50428850 Ω")); // 2'11 + 150
+	m_ResZ->setToolTip(weChinese2LocalCode("0 关闭正电阻总开关"));
 	m_ResZ->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 	m_ResZ->setValidator(new QIntValidator(150, 1048725, m_ResZ));
 
 	m_ResF = new QLineEdit;
-	m_ResF->setPlaceholderText(weChinese2LocalCode("x = 150 ~ 1048725 Ω"));
+	m_ResF->setPlaceholderText(weChinese2LocalCode("x = 150 ~ 50428850 Ω")); //50428850
+	m_ResF->setToolTip(weChinese2LocalCode("0 关闭负电阻总开关"));
 	m_ResF->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 	m_ResF->setValidator(new QIntValidator(150, 1048725, m_ResF));
 
@@ -120,15 +123,31 @@ macHighValtage::macHighValtage(QGroupBox *parent)
 	}
 	relaytable->setVerticalHeaderLabels(lst);
 
+	int sCnt = 0;
 	for (int i = 0; i < relaytable->rowCount(); i++)
 	{
 		for (int j = 0; j < relaytable->columnCount(); j++) {
-			//relaytable->horizontalHeader()->setSectionResizeMode(j, QHeaderView::ResizeToContents);
+			sCnt++;
 			relaytable->setEditTriggers(QAbstractItemView::NoEditTriggers);//表格不可编辑
-			//relaytable->setColumnWidth(j, relaytable->size().width() / 1.8);
-			QTableWidgetItem *check = new QTableWidgetItem;
-			check->setCheckState(Qt::Unchecked);
-			relaytable->setItem(i, j, check); //插入复选框
+			
+			switch (sCnt)
+			{
+			case 2:case 3:case 5:case 8:
+			case 11:
+			case 18:case 19:case 20:case 21:case 22:case 23:case 24:
+			case 25:case 26:case 28:case 30:case 32:
+			case 34:case 36:
+			case 87:
+			{
+				QTableWidgetItem *check = new QTableWidgetItem;
+				check->setCheckState(Qt::Unchecked);
+				relaytable->setItem(i, j, check); //插入复选框
+				break;
+			}
+
+			default:
+				break;
+			}
 		}
 	}
 
@@ -517,15 +536,21 @@ void macHighValtage::ipChange(int row, int col)
 
 void macHighValtage::ResZAct()
 {
+	if (m_ResZ->text().isEmpty())
+	{
+		QMessageBox::information(NULL, "Warning", weChinese2LocalCode("电阻值 空"), QMessageBox::Yes, QMessageBox::Yes);
+		m_actResF->setEnabled(true);
+		return;
+	}
+
 	m_actResZ->setEnabled(false);//
-	qint32 resZ = m_ResZ->text().toUInt() - 150;
-	if (resZ < 0)
+	qint32 resZ = m_ResZ->text().toUInt();
+	if (resZ > 0 && resZ < 150)
 	{
 		QMessageBox::information(NULL, "Warning", weChinese2LocalCode("电阻值最小为 150 Ω"), QMessageBox::Yes, QMessageBox::Yes);
 		m_actResZ->setEnabled(true);
 		return ;
 	}
-	resZ = resZ / 100;
 
 	qint64 rv = 0;
 	u8 crc = 0;
@@ -545,7 +570,17 @@ void macHighValtage::ResZAct()
 	relay_data[8] = COMM_CMD_RELAY_CONF;
 	relay_data[9] = 0xb;//len
 
-	relay_data[14] = relay_data[14] | (1 << 5); //relay38 主正总开关
+	if (resZ == 0)
+	{
+		relay_data[14] = relay_data[14] & ~(1 << 5); //relay38 主正总开关
+	}
+	else
+	{
+		relay_data[14] = relay_data[14] | (1 << 5);
+		resZ = resZ - 150;
+		resZ = resZ / 100;
+	}
+	
 	if (resZ & 0x1)
 	{
 		relay_data[14] = relay_data[14] | (1 << 6);
@@ -631,7 +666,7 @@ void macHighValtage::ResZAct()
 	}
 	else
 	{
-		g_disText << weChinese2LocalCode("高压模拟器 主正电阻已激活");
+		g_disText << weChinese2LocalCode("高压模拟器 主正电阻命令已发送");
 	}
 
 	uSocket->disconnect();
@@ -642,16 +677,22 @@ void macHighValtage::ResZAct()
 
 void macHighValtage::ResFAct()
 {
-	m_actResF->setEnabled(false);//
-	qint32 resF = m_ResF->text().toUInt() - 150;
-	if (resF < 0)
+	if (m_ResF->text().isEmpty())
+	{
+		QMessageBox::information(NULL, "Warning", weChinese2LocalCode("电阻值 空"), QMessageBox::Yes, QMessageBox::Yes);
+		m_actResF->setEnabled(true);
+		return;
+	}
+
+	m_actResF->setEnabled(false);
+	qint32 resF = m_ResF->text().toUInt();
+	if (resF > 0 && resF < 150)
 	{
 		QMessageBox::information(NULL, "Warning", weChinese2LocalCode("电阻值最小为 150 Ω"), QMessageBox::Yes, QMessageBox::Yes);
 		m_actResF->setEnabled(true);
 		return;
 	}
-	resF = resF / 100;
-
+	
 	qint64 rv = 0;
 	u8 crc = 0;
 	QUdpSocket *uSocket = new QUdpSocket();
@@ -670,7 +711,17 @@ void macHighValtage::ResFAct()
 	relay_data[8] = COMM_CMD_RELAY_CONF;
 	relay_data[9] = 0xb;//len
 
-	relay_data[17] = relay_data[17] | (1 << 1); //relay58 主负总开关
+	if (resF == 0)
+	{
+		relay_data[17] = relay_data[17] & ~(1 << 1); //relay58 主负总开关
+	} 
+	else
+	{
+		relay_data[17] = relay_data[17] | (1 << 1); //relay58 主负总开关
+		resF = resF - 150;
+		resF = resF / 100;
+	}
+	
 	for (int j = 0; j < 6; j++)
 	{
 		if ((resF >> j) & 0x1)
@@ -750,7 +801,7 @@ void macHighValtage::ResFAct()
 	}
 	else
 	{
-		g_disText << weChinese2LocalCode("高压模拟器 主负电阻已激活");
+		g_disText << weChinese2LocalCode("高压模拟器 主负电阻命令已发送");
 	}
 
 	uSocket->disconnect();
@@ -811,15 +862,32 @@ void macHighValtage::relayactive()
 	relay_data[8] = COMM_CMD_RELAY_CONF;
 	relay_data[9] = 0xb;//len
 
+	int sCnt = 0;
 	for (int j=0;j<11;j++)
 	{
 		relay_data[j+10] = 0;
 
 		for (int k=0;k<8;k++)
 		{
-			if (relaytable->item(j,k)->checkState() == Qt::Checked)
+			sCnt++;
+			switch (sCnt)
 			{
-				relay_data[j+10] = (relay_data[j+10] | (1<<k));
+			case 2:case 3:case 5:case 8:
+			case 11:
+			case 18:case 19:case 20:case 21:case 22:case 23:case 24:
+			case 25:case 26:case 28:case 30:case 32:
+			case 34:case 36:
+			case 87:
+			{
+				if (relaytable->item(j, k)->checkState() == Qt::Checked)
+				{
+					relay_data[j + 10] = (relay_data[j + 10] | (1 << k));
+				}
+			}
+			break;
+
+			default:
+				break;
 			}
 		}
 
@@ -893,20 +961,58 @@ void macHighValtage::relayclear(int check)
 	if (check == Qt::Checked)
 	{
 		cleartableButt->setText(weChinese2LocalCode("点击取消选中所有Relay"));
+		int sCnt = 0;
 		for (int i = 0; i < relaytable->rowCount(); i++)
 		{
 			for (int j = 0; j < relaytable->columnCount(); j++) {
-				relaytable->item(i, j)->setCheckState(Qt::Checked);
+				sCnt++;
+				switch (sCnt)
+				{
+				case 2:case 3:case 5:case 8:
+				case 11:case 16:
+				case 17:case 18:case 19:case 20:case 21:case 22:case 23:case 24:
+				case 25:case 26:case 27:case 28:case 29:case 30:case 31:case 32:
+				case 33:case 34:case 35:case 36:case 37:
+				case 78:case 79:case 80:
+				case 81:case 82:case 83:case 84:case 86:
+				{
+					relaytable->item(i, j)->setCheckState(Qt::Checked);
+					break;
+				}
+
+				default:
+					break;
+				}
+				
 			}
 		}
 	}
 	else
 	{
 		cleartableButt->setText(weChinese2LocalCode("点击选中所有Relay"));
+		int sCnt = 0;
 		for (int i = 0; i < relaytable->rowCount(); i++)
 		{
 			for (int j = 0; j < relaytable->columnCount(); j++) {
-				relaytable->item(i, j)->setCheckState(Qt::Unchecked);
+				sCnt++;
+				switch (sCnt)
+				{
+				case 2:case 3:case 5:case 8:
+				case 11:case 16:
+				case 17:case 18:case 19:case 20:case 21:case 22:case 23:case 24:
+				case 25:case 26:case 27:case 28:case 29:case 30:case 31:case 32:
+				case 33:case 34:case 35:case 36:case 37:
+				case 78:case 79:case 80:
+				case 81:case 82:case 83:case 84:case 86:
+				{
+					relaytable->item(i, j)->setCheckState(Qt::Unchecked);
+					break;
+				}
+
+				default:
+					break;
+				}
+
 			}
 		}
 	}		

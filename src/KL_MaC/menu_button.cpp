@@ -19,19 +19,19 @@ macMenuButton::macMenuButton(QWidget *parent /*= 0*/)
 	//文件
 	menu = new QMenu;
 
-	fileMenu = menu->addMenu("File");
-	actionNew = fileMenu->addAction("New");
-	actionOpen = fileMenu->addAction("Open");
-	actionSave = fileMenu->addAction("Save");
+	//fileMenu = menu->addMenu("File");
+	//actionNew = fileMenu->addAction("New");
+	//actionOpen = fileMenu->addAction("Open");
+	//actionSave = fileMenu->addAction("Save");
 
 	//编辑
-	editMenu = menu->addMenu(weChinese2LocalCode("工具"));
-	actionSsh = editMenu->addAction(weChinese2LocalCode("命令行ssh"),this,SLOT(actionSlots()));
-	actionRedo = editMenu->addAction(weChinese2LocalCode("文件传输sftp"));
-	editMenu->addSeparator();
-	actionCut = editMenu->addAction("Cut");
-	actionCopy = editMenu->addAction("Copy");
-	actionSelectAll = editMenu->addAction("Select All");
+	//editMenu = menu->addMenu(weChinese2LocalCode("工具"));
+	//actionSsh = editMenu->addAction(weChinese2LocalCode("命令行ssh"),this,SLOT(actionSlots()));
+	//actionRedo = editMenu->addAction(weChinese2LocalCode("文件传输sftp"));
+	//editMenu->addSeparator();
+	//actionCut = editMenu->addAction("Cut");
+	//actionCopy = editMenu->addAction("Copy");
+	//actionSelectAll = editMenu->addAction("Select All");
 
 	//关于、帮助
 	menu->addSeparator();

@@ -16,6 +16,8 @@ macTreeSys::macTreeSys(QTreeWidget *parent)
 	setHeaderHidden(true);
 	setContextMenuPolicy(Qt::CustomContextMenu);//”“º¸œÏ”¶
 
+	setFocusPolicy(Qt::NoFocus);
+
 	QTextCodec *codec = QTextCodec::codecForLocale();
 	QString tmp;
 

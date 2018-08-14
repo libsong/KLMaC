@@ -138,7 +138,7 @@
     <ClCompile Include="PowerSupplyBox.cpp" />
     <ClCompile Include="push_button.cpp" />
     <ClCompile Include="shadow_widget.cpp" />
-    <ClCompile Include="SignalProcess.cpp" />
+    <ClCompile Include="SignalAdjust.cpp" />
     <ClCompile Include="RepaintControl.cpp" />
     <ClCompile Include="title_widget.cpp" />
     <ClCompile Include="tree_sys.cpp" />
@@ -176,7 +176,10 @@
     </QtMoc>
     <ClInclude Include="resource.h" />
     <QtMoc Include="we_shell.h" />
-    <QtMoc Include="SignalProcess.h" />
+    <QtMoc Include="SignalAdjust.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;E:\aaProduct\sf\KlMaC\src\KL_MaC\inc;$(QTDIR)\include\QtNetwork</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">E:\aaProduct\sf\KlMaC\src\KL_MaC\inc;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork</IncludePath>
+    </QtMoc>
     <ClInclude Include="we_types.h" />
     <QtMoc Include="tree_sys.h" />
     <QtMoc Include="menu_button.h" />

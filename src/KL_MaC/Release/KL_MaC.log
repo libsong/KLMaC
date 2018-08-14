@@ -1,60 +1,9 @@
-﻿生成启动时间为 2018/8/10 11:06:58。
-     1>项目“E:\aaProduct\sf\KlMaC\src\KL_MaC\KL_MaC.vcxproj”在节点 2 上(Rebuild 个目标)。
+﻿生成启动时间为 2018/8/14 10:03:56。
+     1>项目“E:\aaProduct\sf\KlMaC\src\KL_MaC\KL_MaC.vcxproj”在节点 2 上(Build 个目标)。
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Release\) contains files shared from another project (KL_MaC.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-     1>QtFinalize:
-         Moc'ing main_widget.h...
-         Moc'ing shadow_widget.h...
-         Moc'ing title_widget.h...
-         Moc'ing push_button.h...
-         Moc'ing udp_mulcast.h...
-         Moc'ing LocalWidget.h...
-         Moc'ing PowerSupplyBox.h...
-         Moc'ing HighValtage.h...
-         Moc'ing FiuNv.h...
-         Moc'ing PowerSimuBox.h...
-         Moc'ing RepaintControl.h...
-         Moc'ing we_shell.h...
-         Moc'ing SignalProcess.h...
-         Moc'ing tree_sys.h...
-         Moc'ing menu_button.h...
-         Rcc'ing KL_MaC.qrc...
-       ClCompile:
-         D:\vs\exe2015\VC\bin\CL.exe /c /IE:\aaProduct\sf\KlMaC\src\KL_MaC\inc /I.\GeneratedFiles /I. /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include /I.\GeneratedFiles\Release /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtCore /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtGui /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtANGLE /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtWidgets /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtNetwork /nologo /W1 /WX- /MP /O2 /Oy- /D UNICODE /D WIN32 /D WIN64 /D QT_DLL /D QT_NO_DEBUG /D NDEBUG /D QT_CORE_LIB /D QT_GUI_LIB /D QT_WIDGETS_LIB /D QT_NETWORK_LIB /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Release\\" /Fd"Release\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt FiuNv.cpp HighValtage.cpp LocalWidget.cpp main_widget.cpp main.cpp menu_button.cpp PowerSimuBox.cpp PowerSupplyBox.cpp push_button.cpp shadow_widget.cpp SignalProcess.cpp RepaintControl.cpp title_widget.cpp tree_sys.cpp udp_mulcast.cpp we_shell.cpp we_types.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_main_widget.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_shadow_widget.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_title_widget.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_push_button.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_udp_mulcast.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_LocalWidget.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_PowerSupplyBox.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_HighValtage.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_FiuNv.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_PowerSimuBox.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_RepaintControl.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_we_shell.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_SignalProcess.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_tree_sys.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\Release\moc_menu_button.cpp E:\aaProduct\sf\KlMaC\src\KL_MaC\GeneratedFiles\qrc_KL_MaC.cpp
-         FiuNv.cpp
+     1>ClCompile:
+         D:\vs\exe2015\VC\bin\CL.exe /c /IE:\aaProduct\sf\KlMaC\src\KL_MaC\inc /I.\GeneratedFiles /I. /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include /I.\GeneratedFiles\Release /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtCore /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtGui /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtANGLE /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtWidgets /ID:\Qt\5.8.0\vs_exe\5.8\msvc2015\include\QtNetwork /nologo /W1 /WX- /MP /O2 /Oy- /D UNICODE /D WIN32 /D WIN64 /D QT_DLL /D QT_NO_DEBUG /D NDEBUG /D QT_CORE_LIB /D QT_GUI_LIB /D QT_WIDGETS_LIB /D QT_NETWORK_LIB /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Release\\" /Fd"Release\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt HighValtage.cpp
          HighValtage.cpp
-         LocalWidget.cpp
-         main_widget.cpp
-         main.cpp
-         menu_button.cpp
-         PowerSimuBox.cpp
-         PowerSupplyBox.cpp
-         push_button.cpp
-         shadow_widget.cpp
-         SignalProcess.cpp
-         RepaintControl.cpp
-         title_widget.cpp
-         tree_sys.cpp
-         udp_mulcast.cpp
-         we_shell.cpp
-         we_types.cpp
-         moc_main_widget.cpp
-         moc_shadow_widget.cpp
-         moc_title_widget.cpp
-         moc_push_button.cpp
-         moc_udp_mulcast.cpp
-         moc_LocalWidget.cpp
-         moc_PowerSupplyBox.cpp
-         moc_HighValtage.cpp
-         moc_FiuNv.cpp
-         moc_PowerSimuBox.cpp
-         moc_RepaintControl.cpp
-         moc_we_shell.cpp
-         moc_SignalProcess.cpp
-         moc_tree_sys.cpp
-         moc_menu_button.cpp
-         qrc_KL_MaC.cpp
-       ResourceCompile:
-         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /l"0x0409" /nologo /fo"Release\KL_MaC.res" KL_MaC.rc 
        Link:
          D:\vs\exe2015\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\aaProduct\sf\KlMaC\src\Win32\Release\\KL_iMaC.exe" /NOLOGO /LIBPATH:E:\aaProduct\sf\KlMaC\src\KL_MaC\lib /LIBPATH:D:\Qt\5.8.0\vs_exe\5.8\msvc2015\lib qtmain.lib Qt5Core.lib Qt5Gui.lib Iphlpapi.lib Qt5Widgets.lib Qt5Network.lib libeay32.lib libssh2.lib ssleay32.lib zlibwapi.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"E:\aaProduct\sf\KlMaC\src\Win32\Release\KL_iMaC.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\aaProduct\sf\KlMaC\src\Win32\Release\KL_iMaC.lib" /MACHINE:X86 /SAFESEH Release\KL_MaC.res
          Release\FiuNv.obj
@@ -67,7 +16,7 @@
          Release\PowerSupplyBox.obj
          Release\push_button.obj
          Release\shadow_widget.obj
-         Release\SignalProcess.obj
+         Release\SignalAdjust.obj
          Release\RepaintControl.obj
          Release\title_widget.obj
          Release\tree_sys.obj
@@ -86,14 +35,14 @@
          Release\moc_PowerSimuBox.obj
          Release\moc_RepaintControl.obj
          Release\moc_we_shell.obj
-         Release\moc_SignalProcess.obj
+         Release\moc_SignalAdjust.obj
          Release\moc_tree_sys.obj
          Release\moc_menu_button.obj
          Release\qrc_KL_MaC.obj
            正在创建库 E:\aaProduct\sf\KlMaC\src\Win32\Release\KL_iMaC.lib 和对象 E:\aaProduct\sf\KlMaC\src\Win32\Release\KL_iMaC.exp
          KL_MaC.vcxproj -> E:\aaProduct\sf\KlMaC\src\Win32\Release\KL_iMaC.exe
-     1>已完成生成项目“E:\aaProduct\sf\KlMaC\src\KL_MaC\KL_MaC.vcxproj”(Rebuild 个目标)的操作。
+     1>已完成生成项目“E:\aaProduct\sf\KlMaC\src\KL_MaC\KL_MaC.vcxproj”(Build 个目标)的操作。
 
 已成功生成。
 
-已用时间 00:00:23.08
+已用时间 00:00:03.29

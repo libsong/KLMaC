@@ -65,7 +65,7 @@ macMainWidget::macMainWidget(QWidget *parent)
 
 	setLayout(pLayout);
 
-	g_disText << weChinese2LocalCode("KL MaC Start .");
+	g_disText << weChinese2LocalCode("KL iMaC Start .");
 }
 
 macMainWidget::~macMainWidget()
@@ -240,11 +240,10 @@ void disTextBrowerTh::run()
 			{
 				emit toDisTextSlot(g_disText.at(i));
 				g_disText.removeAt(i);
-				qDebug() << "disTextBrowerTh in";
 			}
 		}		
 
-		msleep(2);
+		msleep(10);
 	}
 }
 

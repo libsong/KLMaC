@@ -14,6 +14,10 @@ macPs::macPs(QGroupBox *parent)
 	sp_tab->setTabPosition(QTabWidget::South);//tab标签位于下方
 	sp_tab->setTabShape(QTabWidget::Triangular);//圆角
 
+	QString tabBarStyle = "QTabBar::tab {min-width:100px;color: white;background-color:qlineargradient(x1:0, y1:0, x2:0, y2:1, stop: 0 #eeeeee, stop: 1 lightgray);\
+								border: 1px solid;border-top-left-radius: 5px;border-top-right-radius: 5px;padding:2px;}\
+								QTabBar::tab:!selected {margin-top: 3px;}QTabBar::tab:selected {color: blue;}"; 
+	sp_tab->setStyleSheet(tabBarStyle);
 												//
 	mcutable = new QTableWidget;//表格操作 https://www.cnblogs.com/zhoug2020/p/3789076.html
 	mcutable->setColumnCount(2);
@@ -79,7 +83,10 @@ macPs::macPs(QGroupBox *parent)
 	QVBoxLayout *vLayout = new QVBoxLayout;
 	vLayout->addWidget(m_pPwr1Grp);
 	vLayout->addWidget(m_pPwr2Grp);
-	vLayout->addWidget(activeButt);
+	QHBoxLayout *hLayout3 = new QHBoxLayout;
+	hLayout3->addStretch(this->width() - activeButt->width());
+	hLayout3->addWidget(activeButt);
+	vLayout->addLayout(hLayout3);
 
 	m_pPwr->setLayout(vLayout);
 	sp_tab->addTab(m_pPwr, weChinese2LocalCode("控制管理"));

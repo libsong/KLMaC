@@ -14,7 +14,7 @@
 #include "PowerSupplyBox.h"
 #include "HighValtage.h"
 #include "FiuNv.h"
-#include "SignalProcess.h"
+#include "SignalAdjust.h"
 #include "udp_mulcast.h"
 #include "we_types.h"
 #include "PowerSimuBox.h"

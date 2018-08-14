@@ -100,7 +100,7 @@ macFiuNv::macFiuNv(QGroupBox *parent)
 
 	vbox = new QVBoxLayout;
 	//vbox->addWidget(act);
-	vbox->addWidget(relay_grp);
+	//vbox->addWidget(relay_grp); //fiu 有单独的控制软件
 	vbox->addWidget(mag);
 
 	setLayout(vbox);
