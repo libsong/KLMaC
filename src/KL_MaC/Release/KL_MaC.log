@@ -1,10 +1,47 @@
-﻿生成启动时间为 2018/8/15 11:43:45。
+﻿生成启动时间为 2018/8/15 17:26:43。
      1>项目“E:\aaProduct\sf\KlMaC\src\KL_MaC\KL_MaC.vcxproj”在节点 2 上(Build 个目标)。
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Release\) contains files shared from another project (KL_MaC.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-     1>Link:
+     1>ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /l"0x0409" /nologo /fo"Release\KL_MaC.res" KL_MaC.rc 
+       Link:
+         D:\vs\exe2015\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\aaProduct\sf\KlMaC\src\Win32\Release\\KL_iMaC.exe" /NOLOGO /LIBPATH:E:\aaProduct\sf\KlMaC\src\KL_MaC\lib /LIBPATH:D:\Qt\5.8.0\vs_exe\5.8\msvc2015\lib qtmain.lib Qt5Core.lib Qt5Gui.lib Iphlpapi.lib Qt5Widgets.lib Qt5Network.lib libeay32.lib libssh2.lib ssleay32.lib zlibwapi.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"E:\aaProduct\sf\KlMaC\src\Win32\Release\KL_iMaC.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\aaProduct\sf\KlMaC\src\Win32\Release\KL_iMaC.lib" /MACHINE:X86 /SAFESEH Release\KL_MaC.res
+         Release\FiuNv.obj
+         Release\HighValtage.obj
+         Release\LocalWidget.obj
+         Release\main_widget.obj
+         Release\main.obj
+         Release\menu_button.obj
+         Release\PowerSimuBox.obj
+         Release\PowerSupplyBox.obj
+         Release\push_button.obj
+         Release\shadow_widget.obj
+         Release\SignalAdjust.obj
+         Release\RepaintControl.obj
+         Release\title_widget.obj
+         Release\tree_sys.obj
+         Release\udp_mulcast.obj
+         Release\we_shell.obj
+         Release\we_types.obj
+         Release\moc_main_widget.obj
+         Release\moc_shadow_widget.obj
+         Release\moc_title_widget.obj
+         Release\moc_push_button.obj
+         Release\moc_udp_mulcast.obj
+         Release\moc_LocalWidget.obj
+         Release\moc_PowerSupplyBox.obj
+         Release\moc_HighValtage.obj
+         Release\moc_FiuNv.obj
+         Release\moc_PowerSimuBox.obj
+         Release\moc_RepaintControl.obj
+         Release\moc_we_shell.obj
+         Release\moc_SignalAdjust.obj
+         Release\moc_tree_sys.obj
+         Release\moc_menu_button.obj
+         Release\qrc_KL_MaC.obj
+           正在创建库 E:\aaProduct\sf\KlMaC\src\Win32\Release\KL_iMaC.lib 和对象 E:\aaProduct\sf\KlMaC\src\Win32\Release\KL_iMaC.exp
          KL_MaC.vcxproj -> E:\aaProduct\sf\KlMaC\src\Win32\Release\KL_iMaC.exe
      1>已完成生成项目“E:\aaProduct\sf\KlMaC\src\KL_MaC\KL_MaC.vcxproj”(Build 个目标)的操作。
 
 已成功生成。
 
-已用时间 00:00:00.25
+已用时间 00:00:00.58

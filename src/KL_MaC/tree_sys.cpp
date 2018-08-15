@@ -312,66 +312,66 @@ void macTreeSys::MakeRemoteLeaf(void * val)
 				if (key == mapRemoteLeaf.end())
 				{
 					uidExist = false;
-					mapRemoteLeaf.insert(std::map<QString, int>::value_type(mapKey, i+1));
-				}
-			}
-	
-			if (!uidExist)//此设备不在树中 创建
-			{
-				uidExist = true;
-
-				if (tmp.devType == 0x0100)
-				{
-					memset(name_tmp, 0, 128);
-					sprintf(name_tmp, "电源分配箱");
-				}
-				if (tmp.devType == 0x0101)
-				{
-					memset(name_tmp, 0, 128);
-					sprintf(name_tmp, "电源模拟箱");
-				}
-				if (tmp.devType == 0x0200)
-				{
-					memset(name_tmp, 0, 128);
-					sprintf(name_tmp, "故障注入箱");
-				}
-				if (tmp.devType == 0x0300)
-				{
-					memset(name_tmp, 0, 128);
-					sprintf(name_tmp, "高压模拟箱");
-				}
-				if (tmp.devType == 0x0400)
-				{
-					memset(name_tmp, 0, 128);
-					sprintf(name_tmp, "信号调理箱");
+					mapRemoteLeaf.insert(std::map<QString, int>::value_type(mapKey, remoteleaf_cnt));
 				}
 
-				m_leafinfo[remoteleaf_cnt] = new McuInfo_t;
-				memcpy(m_leafinfo[remoteleaf_cnt], &tmp, sizeof(McuInfo_t));
-
-				m_remoteleaf[remoteleaf_cnt] = new QTreeWidgetItem(m_remote, QStringList(weChinese2LocalCode(name_tmp)));
-				m_remoteleaf[remoteleaf_cnt]->setToolTip(0, weChinese2LocalCode(name_tmp)+ weChinese2LocalCode(",双击可重命名"));
-				m_remoteleaf[remoteleaf_cnt]->setFlags(m_remoteleaf[remoteleaf_cnt]->flags() | Qt::ItemIsEditable);
-
-				remoteleaf_cnt++;
-				break;
-			}
-			else //设备树以创建 信息是否变化 如 ip 等
-			{
-				//从mapkey找到uid对应的cnt，再比较信息结构体
-				QString uid0 = QString::number(tmp.mcuUID[0], 10);
-				QString uid1 = QString::number(tmp.mcuUID[1], 10);
-				QString uid2 = QString::number(tmp.mcuUID[2], 10);
-				QString mapKey = uid0 + uid1 + uid2;
-				int tmp_uidcnt = mapRemoteLeaf[mapKey];
-
-				if (memcmp((u8 *)&tmp, (u8 *)m_leafinfo[tmp_uidcnt], sizeof(McuInfo_t)))
+				if (!uidExist)//此设备不在树中 创建
 				{
-					//更新信息
-					*m_leafinfo[tmp_uidcnt] = tmp;
-					emit showStackWidget(m_leafinfo[tmp_uidcnt]);//发送设备树的mcu信息，slot中根据信息的设备类型显示相应的widget
+					uidExist = true;
+
+					if (tmp.devType == 0x0100)
+					{
+						memset(name_tmp, 0, 128);
+						sprintf(name_tmp, "电源分配箱");
+					}
+					if (tmp.devType == 0x0101)
+					{
+						memset(name_tmp, 0, 128);
+						sprintf(name_tmp, "电源模拟箱");
+					}
+					if (tmp.devType == 0x0200)
+					{
+						memset(name_tmp, 0, 128);
+						sprintf(name_tmp, "故障注入箱");
+					}
+					if (tmp.devType == 0x0300)
+					{
+						memset(name_tmp, 0, 128);
+						sprintf(name_tmp, "高压模拟箱");
+					}
+					if (tmp.devType == 0x0400)
+					{
+						memset(name_tmp, 0, 128);
+						sprintf(name_tmp, "信号调理箱");
+					}
+
+					m_leafinfo[remoteleaf_cnt] = new McuInfo_t;
+					memcpy(m_leafinfo[remoteleaf_cnt], &tmp, sizeof(McuInfo_t));
+
+					m_remoteleaf[remoteleaf_cnt] = new QTreeWidgetItem(m_remote, QStringList(weChinese2LocalCode(name_tmp)));
+					m_remoteleaf[remoteleaf_cnt]->setToolTip(0, weChinese2LocalCode(name_tmp) + weChinese2LocalCode(",双击可重命名"));
+					m_remoteleaf[remoteleaf_cnt]->setFlags(m_remoteleaf[remoteleaf_cnt]->flags() | Qt::ItemIsEditable);
+
+					remoteleaf_cnt++;
+					break;
 				}
-			}
+				else //设备树以创建 信息是否变化 如 ip 等
+				{
+					//从mapkey找到uid对应的cnt，再比较信息结构体
+					QString uid0 = QString::number(tmp.mcuUID[0], 10);
+					QString uid1 = QString::number(tmp.mcuUID[1], 10);
+					QString uid2 = QString::number(tmp.mcuUID[2], 10);
+					QString mapKey = uid0 + uid1 + uid2;
+					int tmp_uidcnt = mapRemoteLeaf[mapKey];
+
+					if (memcmp((u8 *)&tmp, (u8 *)m_leafinfo[tmp_uidcnt], sizeof(McuInfo_t)))
+					{
+						//更新信息
+						*m_leafinfo[tmp_uidcnt] = tmp;
+						emit showStackWidget(m_leafinfo[tmp_uidcnt]);//发送设备树的mcu信息，slot中根据信息的设备类型显示相应的widget
+					}
+				}
+			}			
 		}
 	}
 }
