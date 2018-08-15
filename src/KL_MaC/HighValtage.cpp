@@ -71,16 +71,16 @@ macHighValtage::macHighValtage(QGroupBox *parent)
 	connect(m_actResF, SIGNAL(clicked()), this, SLOT(ResFAct()));
 
 	m_ResZ = new QLineEdit;
-	m_ResZ->setPlaceholderText(weChinese2LocalCode("x = 150 ~ 50428850 Ω")); // 2'11 + 150
+	m_ResZ->setPlaceholderText(weChinese2LocalCode("x = 150 ~ 52428850 Ω")); // 2'11 + 150
 	m_ResZ->setToolTip(weChinese2LocalCode("0 关闭正电阻总开关"));
 	m_ResZ->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-	m_ResZ->setValidator(new QIntValidator(150, 1048725, m_ResZ));
+	m_ResZ->setValidator(new QIntValidator(150, 52428850, m_ResZ));
 
 	m_ResF = new QLineEdit;
-	m_ResF->setPlaceholderText(weChinese2LocalCode("x = 150 ~ 50428850 Ω")); //50428850
+	m_ResF->setPlaceholderText(weChinese2LocalCode("x = 150 ~ 52428850 Ω")); //50428850
 	m_ResF->setToolTip(weChinese2LocalCode("0 关闭负电阻总开关"));
 	m_ResF->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-	m_ResF->setValidator(new QIntValidator(150, 1048725, m_ResF));
+	m_ResF->setValidator(new QIntValidator(150, 52428850, m_ResF));
 
 	//
 	QHBoxLayout *editLy = new QHBoxLayout;
@@ -579,6 +579,7 @@ void macHighValtage::ResZAct()
 		relay_data[14] = relay_data[14] | (1 << 5);
 		resZ = resZ - 150;
 		resZ = resZ / 100;
+		resZ = ~resZ;
 	}
 	
 	if (resZ & 0x1)
@@ -720,6 +721,7 @@ void macHighValtage::ResFAct()
 		relay_data[17] = relay_data[17] | (1 << 1); //relay58 主负总开关
 		resF = resF - 150;
 		resF = resF / 100;
+		resF = ~resF;
 	}
 	
 	for (int j = 0; j < 6; j++)
@@ -969,12 +971,11 @@ void macHighValtage::relayclear(int check)
 				switch (sCnt)
 				{
 				case 2:case 3:case 5:case 8:
-				case 11:case 16:
-				case 17:case 18:case 19:case 20:case 21:case 22:case 23:case 24:
-				case 25:case 26:case 27:case 28:case 29:case 30:case 31:case 32:
-				case 33:case 34:case 35:case 36:case 37:
-				case 78:case 79:case 80:
-				case 81:case 82:case 83:case 84:case 86:
+				case 11:
+				case 18:case 19:case 20:case 21:case 22:case 23:case 24:
+				case 25:case 26:case 28:case 30:case 32:
+				case 34:case 36:
+				case 87:
 				{
 					relaytable->item(i, j)->setCheckState(Qt::Checked);
 					break;
@@ -998,12 +999,11 @@ void macHighValtage::relayclear(int check)
 				switch (sCnt)
 				{
 				case 2:case 3:case 5:case 8:
-				case 11:case 16:
-				case 17:case 18:case 19:case 20:case 21:case 22:case 23:case 24:
-				case 25:case 26:case 27:case 28:case 29:case 30:case 31:case 32:
-				case 33:case 34:case 35:case 36:case 37:
-				case 78:case 79:case 80:
-				case 81:case 82:case 83:case 84:case 86:
+				case 11:
+				case 18:case 19:case 20:case 21:case 22:case 23:case 24:
+				case 25:case 26:case 28:case 30:case 32:
+				case 34:case 36:
+				case 87:
 				{
 					relaytable->item(i, j)->setCheckState(Qt::Unchecked);
 					break;

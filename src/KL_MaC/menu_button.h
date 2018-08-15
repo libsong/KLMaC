@@ -37,6 +37,7 @@ protected slots:
 	//
 	void makeSsh(QString ip, QString usr, QString pwd);
 
+
 signals:
 	void showSettingDialog();
 	void showNewCharacter();

@@ -2,10 +2,23 @@
 ; 有关创建 Inno Setup 脚本文件的详细资料请查阅帮助文档！
 
 #define MyAppName "KL_iMaC"
-#define MyAppVersion "1.2.0"
+#define MyAppVersion "v1.2.0"
 #define MyAppPublisher "上海科梁信息工程股份有限公司"
 #define MyAppURL "www.keliangtek.com"
 #define MyAppExeName "KL_iMaC.exe"  
+
+#define FileIni "E:\aaProduct\sf\KlMaC\src\Win32\Release\DateTime2INI.ini"
+;exec the script that creates the ini file 
+#expr Exec("cscript.exe", "E:\aaProduct\sf\KlMaC\src\Win32\Release\DateTime2INI.vbs","E:\aaProduct\sf\KlMaC\src\Win32\Release\")
+; read infos in variables 
+#define BuildYear   ReadIni(FileIni , "DateTime" , "Year" ) 
+#define BuildMonth  ReadIni(FileIni , "DateTime" , "Month" ) 
+#define BuildDay    ReadIni(FileIni , "DateTime" , "Day" ) 
+#define BuildHour   ReadIni(FileIni , "DateTime" , "Hour" ) 
+#define BuildMinute ReadIni(FileIni , "DateTime" , "Minute" ) 
+#define BuildSecond ReadIni(FileIni , "DateTime" , "Second" )
+;make the Build String 
+#define BuildStr BuildYear+BuildMonth+BuildDay+BuildHour+BuildMinute+BuildSecond
 
 [Setup]
 ; 注: AppId的值为单独标识该应用程序。
@@ -20,8 +33,8 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DisableProgramGroupPage=yes
-OutputDir=.                             
-OutputBaseFilename=KL_iMaC setup_x86 v1.2.0-1808141017
+OutputDir=.\RELEASEFILES\                             
+OutputBaseFilename=KL_iMaC-setup_x86-v1.2.0.1_{#BuildStr}
 Compression=lzma
 SolidCompression=yes
 SetupIconFile=.\desktopicon\klmac.ico

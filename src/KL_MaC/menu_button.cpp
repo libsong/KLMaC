@@ -2,7 +2,6 @@
 
 extern QList<QString> g_disText;
 
-
 macMenuButton::macMenuButton(QWidget *parent /*= 0*/)
 	: QPushButton(parent)
 {
@@ -97,7 +96,7 @@ void macMenuButton::aboutDialog()
 	copyright->setFont(font);
 	copyright->setText(QString("< font  color=#e9a96f;>Copyright &#169; 2018</font>"));
 	QLabel *version = new QLabel;
-	version->setText(KLMACSFTVERSION);
+	version->setText("APPVERSION");
 
 	QVBoxLayout *lyt = new QVBoxLayout;
 	lyt->addWidget(company);

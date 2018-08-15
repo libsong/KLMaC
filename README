@@ -4,6 +4,8 @@ update HVS to fit new request in DF
 v1.2.0
 add powersimubox surpport
 
+FILEVERSION 1.2.0.1
+修改高压模拟器的主正负电阻值下发前要取反
 
 TODO:
 display sys need re-write, cause display not by the order what we want .
